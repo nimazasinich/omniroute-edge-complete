@@ -102,6 +102,10 @@ export default {
   async fetch(request: Request, env: WorkerEnv, ctx: MinimalExecutionContext): Promise<Response> {
     const url = new URL(request.url);
 
+    if (url.pathname === '/favicon.ico') {
+      return Response.redirect(new URL('/favicon.svg', url).toString(), 302);
+    }
+
     if (url.pathname === '/v1' || url.pathname.startsWith('/v1/')) {
       return handleGatewayRequest(request, {
         authenticate: (token) => authenticateGatewayToken(env, token),

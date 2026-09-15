@@ -46,9 +46,11 @@ test('frontend uses real backend auth flow before dashboard access', async () =>
 });
 
 test('successful password/bootstrap login must establish a readable session before redirecting', async () => {
+  const provider = await read('src/auth/AuthProvider.tsx');
   const login = await read('src/components/DreamWorkerAuthScreen.tsx');
-  assert.ok(login.includes('const sessionUser = await refreshSession()'), 'login must retain refreshSession result');
-  assert.ok(login.includes('if (!sessionUser)'), 'login must fail closed when the new session cookie is not readable');
+  assert.ok(provider.includes("throw new Error('Secure browser session is not available.')"), 'refreshSession must fail closed when the new session cookie is not readable');
+  assert.ok(provider.includes('refreshSession().catch(() => undefined)'), 'initial anonymous session check must consume the expected unauthenticated rejection');
+  assert.ok(login.includes('await refreshSession()'), 'login and bootstrap must await session validation');
   assert.ok(login.includes("navigate('/connecting', { replace: true })"), 'login must enter the connecting verification flow only after session validation');
 });
 

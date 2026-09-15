@@ -28,6 +28,7 @@ import {
   findUserByIdentifier,
   hashOpaque,
   loginRateState,
+  matchesInitialAdminIdentifier,
   normalizeEmail,
   normalizeUsername,
   oauthProviderConfig,
@@ -217,7 +218,9 @@ app.post('/api/auth/login', async (c) => {
   if (!rate.allowed) return authError(c, 429, 'TOO_MANY_ATTEMPTS', 'Too many failed sign-in attempts. Try again later.');
 
   let user = await findUserByIdentifier(db, identifier);
-  if (!user && identifier.includes('@')) user = await ensureInitialAdmin(db, c.env, identifier, password);
+  if (!user && matchesInitialAdminIdentifier(c.env, identifier, password)) {
+    user = await ensureInitialAdmin(db, c.env, identifier, password);
+  }
   const valid = Boolean(user?.passwordHash) && await bcrypt.compare(password, user!.passwordHash!);
   if (!user || !valid || user.status !== 'active') {
     await recordLoginAttempt(db, identifier, false);

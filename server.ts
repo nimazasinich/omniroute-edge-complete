@@ -6,10 +6,13 @@ import { getNodeDb, initializeDb } from './src/server/db/node';
 import fs from 'node:fs';
 
 const PORT = process.env.PORT ? Number.parseInt(process.env.PORT, 10) : 3001;
+const HOST = process.env.HOST?.trim() || '127.0.0.1';
 
 async function start() {
   await initializeDb();
   const db = getNodeDb();
+
+  app.get('/favicon.ico', (c) => c.redirect('/favicon.svg', 302));
 
   if (fs.existsSync('./dist')) {
     app.use('/assets/*', serveStatic({ root: './dist' }));
@@ -42,9 +45,9 @@ async function start() {
   serve({
     fetch: (request) => app.fetch(request, bindings),
     port: PORT,
-    hostname: '127.0.0.1',
+    hostname: HOST,
   }, (info) => {
-    console.log(`OmniRoute Edge local server listening on http://127.0.0.1:${info.port}`);
+    console.log(`OmniRoute Edge server listening on http://${HOST}:${info.port}`);
   });
 }
 

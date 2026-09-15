@@ -174,12 +174,26 @@ export async function findUserByIdentifier(db: AppDb, value: unknown): Promise<A
   return (await db.query.authUsers.findFirst({ where: eq(authUsers.username, username) })) ?? null;
 }
 
-export async function ensureInitialAdmin(db: AppDb, config: BrowserAuthConfig, email: string, password: string): Promise<AuthUserRow | null> {
-  const existing = await db.query.authUsers.findFirst({ where: eq(authUsers.email, email) });
-  if (existing) return existing;
+export function matchesInitialAdminIdentifier(config: BrowserAuthConfig, value: unknown, password: string): boolean {
   const initialEmail = normalizeEmail(config.INITIAL_ADMIN_EMAIL);
   const initialPassword = config.INITIAL_ADMIN_PASSWORD ?? '';
-  if (!initialEmail || !initialPassword || !safeEqual(email, initialEmail) || !safeEqual(password, initialPassword)) return null;
+  if (!initialEmail || !initialEmail.includes('@') || !initialPassword || !safeEqual(password, initialPassword)) return false;
+
+  const identifier = String(value ?? '').trim();
+  if (!identifier) return false;
+  if (identifier.includes('@')) return safeEqual(normalizeEmail(identifier), initialEmail);
+
+  const initialUsername = normalizeUsername(config.INITIAL_ADMIN_USERNAME);
+  if (!initialUsername || validateUsername(initialUsername)) return false;
+  return safeEqual(normalizeUsername(identifier), initialUsername);
+}
+
+export async function ensureInitialAdmin(db: AppDb, config: BrowserAuthConfig, identifier: string, password: string): Promise<AuthUserRow | null> {
+  if (!matchesInitialAdminIdentifier(config, identifier, password)) return null;
+  const initialEmail = normalizeEmail(config.INITIAL_ADMIN_EMAIL);
+  const existing = await db.query.authUsers.findFirst({ where: eq(authUsers.email, initialEmail) });
+  if (existing) return existing;
+  const initialPassword = config.INITIAL_ADMIN_PASSWORD ?? '';
   const error = validatePassword(initialPassword);
   if (error) throw new Error(`INITIAL_ADMIN_PASSWORD is not acceptable: ${error}`);
   const configuredUsername = normalizeUsername(config.INITIAL_ADMIN_USERNAME);

@@ -24,21 +24,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setUser(null);
         setPermissions(null);
         setState('unauthenticated');
-        return null;
+        throw new Error('Secure browser session is not available.');
       }
       setUser(session.user);
       setState('authenticated');
       try { setPermissions(await checkPermissions()); } catch { setPermissions(null); }
       return session.user;
-    } catch {
+    } catch (cause) {
       setUser(null);
       setPermissions(null);
       setState('unauthenticated');
-      return null;
+      if (cause instanceof Error) throw cause;
+      throw new Error('Unable to validate secure browser session.');
     }
   }, []);
 
-  useEffect(() => { void refreshSession(); }, [refreshSession]);
+  useEffect(() => { void refreshSession().catch(() => undefined); }, [refreshSession]);
 
   const logout = useCallback(async () => {
     try { await logoutSession(); } finally {
@@ -73,6 +74,6 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
 export function AnonymousOnlyRoute({ children }: { children: React.ReactNode }) {
   const { state } = useAuth();
   if (state === 'checking') return <SessionCheckScreen/>;
-  if (state === 'authenticated') return <Navigate to="/" replace/>;
+  if (state === 'authenticated') return <Navigate to="/connecting" replace/>;
   return <>{children}</>;
 }
