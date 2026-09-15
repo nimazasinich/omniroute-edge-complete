@@ -16,7 +16,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Browser auth contract
+      - name: Browser auth/deployment contract
         run: node --test test-node/browser-auth-contract.test.mjs
 
   full:
@@ -27,8 +27,70 @@ jobs:
         with:
           node-version: '22'
           cache: npm
-      - run: npm ci
-      - run: npm run lint
-      - run: npm test
-      - run: npm run test:node
-      - run: npm run build
+
+      - name: Restore dependencies
+        run: npm ci
+
+      - name: TypeScript
+        run: npm run lint
+
+      - name: Vitest
+        run: npm test
+
+      - name: Source-compatible Node contracts
+        shell: bash
+        run: |
+          mapfile -t tests < <(find test-node -maxdepth 1 -name '*.test.mjs' \
+            ! -name 'local-data-credential-placement.test.mjs' \
+            ! -name 'pc-package-safety.test.mjs' \
+            -print | sort)
+          node --experimental-strip-types --test "${tests[@]}"
+
+      - name: Production UI build
+        run: npm run build
+
+      - name: Build deployable control-plane image
+        run: docker build --tag omniroute-edge:ci .
+
+      - name: Smoke UI, auth routes, and favicon
+        shell: bash
+        run: |
+          set -euo pipefail
+          name=omniroute-edge-ci
+          cleanup() {
+            docker logs "$name" 2>&1 || true
+            docker rm -f "$name" >/dev/null 2>&1 || true
+          }
+          trap cleanup EXIT
+
+          docker run -d --name "$name" -p 10000:10000 \
+            -e ENVIRONMENT=ci \
+            omniroute-edge:ci >/dev/null
+
+          ready=0
+          for _ in $(seq 1 45); do
+            if curl --fail --silent --show-error http://127.0.0.1:10000/api/health >/dev/null; then
+              ready=1
+              break
+            fi
+            sleep 1
+          done
+          test "$ready" = 1
+
+          test "$(curl --silent --output /tmp/signin.html --write-out '%{http_code}' http://127.0.0.1:10000/signin)" = 200
+          grep -q '<div id="root"></div>' /tmp/signin.html
+
+          test "$(curl --silent --output /tmp/status.json --write-out '%{http_code}' http://127.0.0.1:10000/api/auth/status)" = 200
+          test "$(curl --silent --output /tmp/session.json --write-out '%{http_code}' http://127.0.0.1:10000/api/auth/session)" = 401
+          test "$(curl --silent --header 'Content-Type: application/json' --data '{}' --output /tmp/login.json --write-out '%{http_code}' http://127.0.0.1:10000/api/auth/login)" = 400
+
+          test "$(curl --silent --output /dev/null --write-out '%{http_code}' http://127.0.0.1:10000/favicon.ico)" = 302
+          test "$(curl --silent --output /tmp/favicon.svg --write-out '%{http_code}' http://127.0.0.1:10000/favicon.svg)" = 200
+          grep -q '<svg' /tmp/favicon.svg
+
+      - name: PC data-bundle diagnostics (non-gating in source-only CI)
+        continue-on-error: true
+        run: |
+          node --experimental-strip-types --test \
+            test-node/local-data-credential-placement.test.mjs \
+            test-node/pc-package-safety.test.mjs
