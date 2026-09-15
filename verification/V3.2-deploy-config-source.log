@@ -1,0 +1,8 @@
+
+> omniroute-edge@3.2.0 verify:deploy-config
+> node scripts/verify-deploy-config.mjs
+
+DEPLOY CONFIG FAIL (2 errors)
+- D1 database_id is still the fail-closed placeholder. Create/inspect the dedicated database and set its verified ID before deploy.
+- OMNIROUTE_ORIGIN is empty. Set the verified HTTPS/Tunnel origin before deploy.
+DEPLOY_CONFIG_SOURCE_EXIT=1

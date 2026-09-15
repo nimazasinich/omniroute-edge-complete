@@ -1,0 +1,22 @@
+import sqlite3
+conn = sqlite3.connect('sqlite.db')
+cur = conn.cursor()
+cur.execute("SELECT name FROM sqlite_master WHERE type='table'")
+print('tables:', [r[0] for r in cur.fetchall()])
+cur.execute("SELECT COUNT(*) FROM providers")
+print('providers:', cur.fetchone()[0])
+cur.execute("SELECT COUNT(*) FROM models")
+print('models:', cur.fetchone()[0])
+cur.execute("SELECT COUNT(*) FROM api_keys")
+print('api_keys:', cur.fetchone()[0])
+cur.execute("SELECT COUNT(*) FROM requests")
+print('requests:', cur.fetchone()[0])
+cur.execute("SELECT COUNT(*) FROM request_attempts")
+print('request_attempts:', cur.fetchone()[0])
+cur.execute("SELECT name, role, revoked, key_prefix FROM api_keys")
+for r in cur.fetchall():
+    print('key:', r[0], r[1], 'revoked='+str(r[2]), 'prefix='+str(r[3]))
+cur.execute("SELECT name, type, base_url, enabled, health_status FROM providers LIMIT 10")
+for r in cur.fetchall():
+    print('provider:', r)
+conn.close()

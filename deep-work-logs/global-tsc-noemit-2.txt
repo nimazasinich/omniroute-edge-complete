@@ -1,0 +1,229 @@
+checkpoints/CP04-FAILOVER-VERIFIED/app.ts(1,22): error TS2307: Cannot find module 'hono' or its corresponding type declarations.
+checkpoints/CP04-FAILOVER-VERIFIED/app.ts(2,22): error TS2307: Cannot find module 'hono/cors' or its corresponding type declarations.
+checkpoints/CP04-FAILOVER-VERIFIED/app.ts(3,24): error TS2307: Cannot find module 'hono/streaming' or its corresponding type declarations.
+checkpoints/CP04-FAILOVER-VERIFIED/app.ts(4,125): error TS2307: Cannot find module './db/schema' or its corresponding type declarations.
+checkpoints/CP04-FAILOVER-VERIFIED/app.ts(5,41): error TS2307: Cannot find module 'drizzle-orm' or its corresponding type declarations.
+checkpoints/CP04-FAILOVER-VERIFIED/app.ts(6,30): error TS2307: Cannot find module 'uuid' or its corresponding type declarations.
+checkpoints/CP04-FAILOVER-VERIFIED/app.ts(7,20): error TS2307: Cannot find module 'bcryptjs' or its corresponding type declarations.
+checkpoints/CP04-FAILOVER-VERIFIED/app.ts(8,20): error TS2307: Cannot find module 'crypto' or its corresponding type declarations.
+checkpoints/CP04-FAILOVER-VERIFIED/app.ts(9,31): error TS2307: Cannot find module './crypto' or its corresponding type declarations.
+checkpoints/CP04-FAILOVER-VERIFIED/app.ts(10,50): error TS2307: Cannot find module './firewall' or its corresponding type declarations.
+checkpoints/CP04-FAILOVER-VERIFIED/app.ts(11,39): error TS2307: Cannot find module './policy' or its corresponding type declarations.
+checkpoints/CP04-FAILOVER-VERIFIED/app.ts(12,73): error TS2307: Cannot find module './router' or its corresponding type declarations.
+checkpoints/CP04-FAILOVER-VERIFIED/app.ts(13,39): error TS2307: Cannot find module './health' or its corresponding type declarations.
+checkpoints/CP04-FAILOVER-VERIFIED/app.ts(14,28): error TS2307: Cannot find module './db/types' or its corresponding type declarations.
+checkpoints/CP04-FAILOVER-VERIFIED/app.ts(88,15): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+checkpoints/CP04-FAILOVER-VERIFIED/app.ts(89,15): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+checkpoints/CP04-FAILOVER-VERIFIED/app.ts(96,31): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+checkpoints/CP04-FAILOVER-VERIFIED/app.ts(341,34): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+checkpoints/CP04-FAILOVER-VERIFIED/app.ts(426,15): error TS2339: Property 'id' does not exist on type 'unknown'.
+checkpoints/CP04-FAILOVER-VERIFIED/app.ts(427,18): error TS2339: Property 'name' does not exist on type 'unknown'.
+checkpoints/CP04-FAILOVER-VERIFIED/app.ts(428,17): error TS2339: Property 'type' does not exist on type 'unknown'.
+checkpoints/CP04-FAILOVER-VERIFIED/app.ts(429,19): error TS2339: Property 'healthStatus' does not exist on type 'unknown'.
+checkpoints/CP04-FAILOVER-VERIFIED/app.ts(843,42): error TS2307: Cannot find module './crypto' or its corresponding type declarations.
+checkpoints/CP04-FAILOVER-VERIFIED/app.ts(1128,41): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+checkpoints/CP04-FAILOVER-VERIFIED/app.ts(1180,48): error TS2307: Cannot find module './health' or its corresponding type declarations.
+checkpoints/CP04-FAILOVER-VERIFIED/node.ts(1,25): error TS2307: Cannot find module 'drizzle-orm/libsql' or its corresponding type declarations.
+checkpoints/CP04-FAILOVER-VERIFIED/node.ts(2,43): error TS2307: Cannot find module '@libsql/client' or its corresponding type declarations.
+checkpoints/CP04-FAILOVER-VERIFIED/node.ts(3,25): error TS2307: Cannot find module './schema' or its corresponding type declarations.
+checkpoints/CP04-FAILOVER-VERIFIED/node.ts(4,18): error TS2307: Cannot find module 'path' or its corresponding type declarations.
+checkpoints/CP04-FAILOVER-VERIFIED/node.ts(5,20): error TS2307: Cannot find module 'bcryptjs' or its corresponding type declarations.
+checkpoints/CP04-FAILOVER-VERIFIED/node.ts(6,30): error TS2307: Cannot find module 'uuid' or its corresponding type declarations.
+checkpoints/CP04-FAILOVER-VERIFIED/node.ts(7,20): error TS2307: Cannot find module 'crypto' or its corresponding type declarations.
+checkpoints/CP04-FAILOVER-VERIFIED/node.ts(8,28): error TS2307: Cannot find module './types' or its corresponding type declarations.
+checkpoints/CP04-FAILOVER-VERIFIED/node.ts(16,20): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+checkpoints/CP04-FAILOVER-VERIFIED/node.ts(16,60): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+checkpoints/CP05-POLICY-ROUTING-V2/app.ts(1,22): error TS2307: Cannot find module 'hono' or its corresponding type declarations.
+checkpoints/CP05-POLICY-ROUTING-V2/app.ts(2,22): error TS2307: Cannot find module 'hono/cors' or its corresponding type declarations.
+checkpoints/CP05-POLICY-ROUTING-V2/app.ts(3,24): error TS2307: Cannot find module 'hono/streaming' or its corresponding type declarations.
+checkpoints/CP05-POLICY-ROUTING-V2/app.ts(4,125): error TS2307: Cannot find module './db/schema' or its corresponding type declarations.
+checkpoints/CP05-POLICY-ROUTING-V2/app.ts(5,41): error TS2307: Cannot find module 'drizzle-orm' or its corresponding type declarations.
+checkpoints/CP05-POLICY-ROUTING-V2/app.ts(6,30): error TS2307: Cannot find module 'uuid' or its corresponding type declarations.
+checkpoints/CP05-POLICY-ROUTING-V2/app.ts(7,20): error TS2307: Cannot find module 'bcryptjs' or its corresponding type declarations.
+checkpoints/CP05-POLICY-ROUTING-V2/app.ts(8,20): error TS2307: Cannot find module 'crypto' or its corresponding type declarations.
+checkpoints/CP05-POLICY-ROUTING-V2/app.ts(9,31): error TS2307: Cannot find module './crypto' or its corresponding type declarations.
+checkpoints/CP05-POLICY-ROUTING-V2/app.ts(10,50): error TS2307: Cannot find module './firewall' or its corresponding type declarations.
+checkpoints/CP05-POLICY-ROUTING-V2/app.ts(11,39): error TS2307: Cannot find module './policy' or its corresponding type declarations.
+checkpoints/CP05-POLICY-ROUTING-V2/app.ts(13,39): error TS2307: Cannot find module './health' or its corresponding type declarations.
+checkpoints/CP05-POLICY-ROUTING-V2/app.ts(14,28): error TS2307: Cannot find module './db/types' or its corresponding type declarations.
+checkpoints/CP05-POLICY-ROUTING-V2/app.ts(88,15): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+checkpoints/CP05-POLICY-ROUTING-V2/app.ts(89,15): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+checkpoints/CP05-POLICY-ROUTING-V2/app.ts(96,31): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+checkpoints/CP05-POLICY-ROUTING-V2/app.ts(341,34): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+checkpoints/CP05-POLICY-ROUTING-V2/app.ts(426,15): error TS2339: Property 'id' does not exist on type 'unknown'.
+checkpoints/CP05-POLICY-ROUTING-V2/app.ts(427,18): error TS2339: Property 'name' does not exist on type 'unknown'.
+checkpoints/CP05-POLICY-ROUTING-V2/app.ts(428,17): error TS2339: Property 'type' does not exist on type 'unknown'.
+checkpoints/CP05-POLICY-ROUTING-V2/app.ts(429,19): error TS2339: Property 'healthStatus' does not exist on type 'unknown'.
+checkpoints/CP05-POLICY-ROUTING-V2/app.ts(843,42): error TS2307: Cannot find module './crypto' or its corresponding type declarations.
+checkpoints/CP05-POLICY-ROUTING-V2/app.ts(1128,41): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+checkpoints/CP05-POLICY-ROUTING-V2/app.ts(1180,48): error TS2307: Cannot find module './health' or its corresponding type declarations.
+checkpoints/CP05-POLICY-ROUTING-V2/router.ts(1,55): error TS2307: Cannot find module './db/schema' or its corresponding type declarations.
+checkpoints/CP05-POLICY-ROUTING-V2/router.ts(2,35): error TS2307: Cannot find module 'drizzle-orm' or its corresponding type declarations.
+checkpoints/CP05-POLICY-ROUTING-V2/router.ts(3,28): error TS2307: Cannot find module './db/types' or its corresponding type declarations.
+checkpoints/CP05-POLICY-ROUTING-V2/router.ts(211,83): error TS2339: Property 'latencyMs' does not exist on type 'unknown'.
+checkpoints/CP05-POLICY-ROUTING-V2/router.ts(219,30): error TS2339: Property 'latencyMs' does not exist on type 'unknown'.
+checkpoints/CP05-POLICY-ROUTING-V2/router.ts(223,39): error TS2339: Property 'successRate' does not exist on type 'unknown'.
+checkpoints/CP05-POLICY-ROUTING-V2/router.ts(224,34): error TS2339: Property 'healthStatus' does not exist on type 'unknown'.
+checkpoints/CP05-POLICY-ROUTING-V2/router.ts(228,42): error TS2339: Property 'priority' does not exist on type 'unknown'.
+checkpoints/CP05-POLICY-ROUTING-V2/router.ts(237,28): error TS2339: Property 'id' does not exist on type 'unknown'.
+checkpoints/CP05-POLICY-ROUTING-V2/router.ts(238,30): error TS2339: Property 'name' does not exist on type 'unknown'.
+checkpoints/CP05-POLICY-ROUTING-V2/router.ts(260,18): error TS2339: Property 'healthStatus' does not exist on type 'unknown'.
+checkpoints/CP05-POLICY-ROUTING-V2/router.ts(268,28): error TS2339: Property 'id' does not exist on type 'unknown'.
+checkpoints/CP05-POLICY-ROUTING-V2/router.ts(269,30): error TS2339: Property 'name' does not exist on type 'unknown'.
+checkpoints/CP05-POLICY-ROUTING-V2/router.ts(271,28): error TS2339: Property 'type' does not exist on type 'unknown'.
+drizzle.config.ts(1,30): error TS2307: Cannot find module 'drizzle-kit' or its corresponding type declarations.
+server.ts(1,23): error TS2307: Cannot find module '@hono/node-server' or its corresponding type declarations.
+server.ts(5,29): error TS2307: Cannot find module '@hono/node-server/serve-static' or its corresponding type declarations.
+server.ts(6,18): error TS2307: Cannot find module 'path' or its corresponding type declarations.
+server.ts(7,16): error TS2307: Cannot find module 'fs' or its corresponding type declarations.
+server.ts(9,14): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+server.ts(9,42): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+server.ts(17,30): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+src/App.tsx(1,44): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/App.tsx(2,66): error TS2307: Cannot find module 'react-router-dom' or its corresponding type declarations.
+src/App.tsx(334,5): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/components/AlertsView.tsx(1,42): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/components/AlertsView.tsx(2,29): error TS2307: Cannot find module 'react-router-dom' or its corresponding type declarations.
+src/components/AlertsView.tsx(3,72): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+src/components/AlertsView.tsx(30,5): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/components/AnalyticsView.tsx(1,32): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/components/AnalyticsView.tsx(2,73): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+src/components/AnalyticsView.tsx(34,5): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/components/ApiKeysView.tsx(1,44): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/components/ApiKeysView.tsx(2,89): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+src/components/ApiKeysView.tsx(70,5): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/components/AppShell.tsx(1,19): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/components/AppShell.tsx(17,5): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/components/DashboardView.tsx(1,19): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/components/DashboardView.tsx(2,29): error TS2307: Cannot find module 'react-router-dom' or its corresponding type declarations.
+src/components/DashboardView.tsx(6,8): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+src/components/DashboardView.tsx(32,5): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/components/EditProviderModal.tsx(1,44): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/components/EditProviderModal.tsx(2,84): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+src/components/EditProviderModal.tsx(89,5): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/components/FirewallView.tsx(1,33): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/components/FirewallView.tsx(5,8): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+src/components/FirewallView.tsx(79,5): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/components/GlobalEdgeTrafficCard.tsx(1,33): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/components/GlobalEdgeTrafficCard.tsx(2,50): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+src/components/GlobalEdgeTrafficCard.tsx(3,29): error TS2307: Cannot find module 'react-router-dom' or its corresponding type declarations.
+src/components/GlobalEdgeTrafficCard.tsx(27,5): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/components/Header.tsx(1,19): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/components/Header.tsx(2,42): error TS2307: Cannot find module 'react-router-dom' or its corresponding type declarations.
+src/components/Header.tsx(3,67): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+src/components/Header.tsx(24,5): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/components/KpiCard.tsx(1,19): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/components/KpiCard.tsx(2,69): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+src/components/KpiCard.tsx(55,5): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/components/LogsView.tsx(1,44): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/components/LogsView.tsx(2,77): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+src/components/LogsView.tsx(92,5): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/components/ModelsView.tsx(1,33): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/components/ModelsView.tsx(2,45): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+src/components/ModelsView.tsx(41,5): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/components/ProviderHealthCard.tsx(1,33): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/components/ProviderHealthCard.tsx(2,64): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+src/components/ProviderHealthCard.tsx(29,5): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/components/ProviderLogos.tsx(1,19): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/components/ProviderLogos.tsx(5,3): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/components/ProvidersView.tsx(1,33): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/components/ProvidersView.tsx(2,93): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+src/components/ProvidersView.tsx(71,5): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/components/RecentDecisionsTable.tsx(1,42): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/components/RecentDecisionsTable.tsx(2,75): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+src/components/RecentDecisionsTable.tsx(54,5): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/components/RoutingRulesView.tsx(1,19): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/components/RoutingRulesView.tsx(2,111): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+src/components/RoutingRulesView.tsx(46,5): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/components/SecurityPoliciesView.tsx(1,44): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/components/SecurityPoliciesView.tsx(2,86): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+src/components/SecurityPoliciesView.tsx(62,5): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/components/SettingsView.tsx(1,44): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/components/SettingsView.tsx(2,113): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+src/components/SettingsView.tsx(44,5): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/components/Sidebar.tsx(1,19): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/components/Sidebar.tsx(2,42): error TS2307: Cannot find module 'react-router-dom' or its corresponding type declarations.
+src/components/Sidebar.tsx(7,8): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+src/components/Sidebar.tsx(31,5): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/components/StatusBadge.tsx(1,19): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/components/StatusBadge.tsx(45,5): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/components/TopologyMap.tsx(1,61): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/components/TopologyMap.tsx(2,92): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+src/components/TopologyMap.tsx(189,5): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/components/TopologyView.tsx(1,42): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/components/TopologyView.tsx(6,8): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+src/components/TopologyView.tsx(69,5): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/components/TracesView.tsx(1,53): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/components/TracesView.tsx(2,72): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+src/components/TracesView.tsx(121,5): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/components/WorldMapPattern.tsx(1,19): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/components/WorldMapPattern.tsx(6,5): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/main.tsx(1,26): error TS2307: Cannot find module 'react' or its corresponding type declarations.
+src/main.tsx(2,26): error TS2307: Cannot find module 'react-dom/client' or its corresponding type declarations.
+src/main.tsx(7,3): error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+src/server/__tests__/failover.test.ts(1,49): error TS2307: Cannot find module 'vitest' or its corresponding type declarations.
+src/server/__tests__/failover.test.ts(3,25): error TS2307: Cannot find module 'drizzle-orm' or its corresponding type declarations.
+src/server/__tests__/policy.test.ts(1,38): error TS2307: Cannot find module 'vitest' or its corresponding type declarations.
+src/server/__tests__/testHarness.ts(1,30): error TS2307: Cannot find module 'uuid' or its corresponding type declarations.
+src/server/__tests__/testHarness.ts(2,20): error TS2307: Cannot find module 'bcryptjs' or its corresponding type declarations.
+src/server/__tests__/topology.test.ts(1,38): error TS2307: Cannot find module 'vitest' or its corresponding type declarations.
+src/server/app.ts(1,22): error TS2307: Cannot find module 'hono' or its corresponding type declarations.
+src/server/app.ts(2,22): error TS2307: Cannot find module 'hono/cors' or its corresponding type declarations.
+src/server/app.ts(3,24): error TS2307: Cannot find module 'hono/streaming' or its corresponding type declarations.
+src/server/app.ts(5,41): error TS2307: Cannot find module 'drizzle-orm' or its corresponding type declarations.
+src/server/app.ts(6,30): error TS2307: Cannot find module 'uuid' or its corresponding type declarations.
+src/server/app.ts(7,20): error TS2307: Cannot find module 'bcryptjs' or its corresponding type declarations.
+src/server/app.ts(8,20): error TS2307: Cannot find module 'crypto' or its corresponding type declarations.
+src/server/app.ts(90,33): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+src/server/app.ts(90,59): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+src/server/app.ts(1270,33): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+src/server/app.ts(1270,59): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+src/server/crypto.ts(1,20): error TS2307: Cannot find module 'crypto' or its corresponding type declarations.
+src/server/crypto.ts(3,20): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+src/server/crypto.ts(4,18): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+src/server/crypto.ts(10,12): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+src/server/crypto.ts(19,22): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+src/server/crypto.ts(28,14): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+src/server/crypto.ts(29,19): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+src/server/crypto.ts(30,22): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+src/server/crypto.ts(33,21): error TS2580: Cannot find name 'Buffer'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+src/server/db/d1.ts(1,25): error TS2307: Cannot find module 'drizzle-orm/d1' or its corresponding type declarations.
+src/server/db/node.ts(1,25): error TS2307: Cannot find module 'drizzle-orm/libsql' or its corresponding type declarations.
+src/server/db/node.ts(2,43): error TS2307: Cannot find module '@libsql/client' or its corresponding type declarations.
+src/server/db/node.ts(4,18): error TS2307: Cannot find module 'path' or its corresponding type declarations.
+src/server/db/node.ts(5,20): error TS2307: Cannot find module 'bcryptjs' or its corresponding type declarations.
+src/server/db/node.ts(6,30): error TS2307: Cannot find module 'uuid' or its corresponding type declarations.
+src/server/db/node.ts(7,20): error TS2307: Cannot find module 'crypto' or its corresponding type declarations.
+src/server/db/node.ts(16,20): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+src/server/db/node.ts(16,60): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+src/server/db/node.ts(197,30): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+src/server/db/node.ts(198,41): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+src/server/db/node.ts(206,29): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+src/server/db/schema.ts(1,50): error TS2307: Cannot find module 'drizzle-orm/sqlite-core' or its corresponding type declarations.
+src/server/db/types.ts(1,41): error TS2307: Cannot find module 'drizzle-orm/sqlite-core' or its corresponding type declarations.
+src/server/health.ts(2,20): error TS2307: Cannot find module 'drizzle-orm' or its corresponding type declarations.
+src/server/policy.ts(2,35): error TS2307: Cannot find module 'drizzle-orm' or its corresponding type declarations.
+src/server/router.ts(2,35): error TS2307: Cannot find module 'drizzle-orm' or its corresponding type declarations.
+src/server/router.ts(211,83): error TS2339: Property 'latencyMs' does not exist on type 'unknown'.
+src/server/router.ts(219,30): error TS2339: Property 'latencyMs' does not exist on type 'unknown'.
+src/server/router.ts(223,39): error TS2339: Property 'successRate' does not exist on type 'unknown'.
+src/server/router.ts(224,34): error TS2339: Property 'healthStatus' does not exist on type 'unknown'.
+src/server/router.ts(228,42): error TS2339: Property 'priority' does not exist on type 'unknown'.
+src/server/router.ts(237,28): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/server/router.ts(238,30): error TS2339: Property 'name' does not exist on type 'unknown'.
+src/server/router.ts(260,18): error TS2339: Property 'healthStatus' does not exist on type 'unknown'.
+src/server/router.ts(268,28): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/server/router.ts(269,30): error TS2339: Property 'name' does not exist on type 'unknown'.
+src/server/router.ts(271,28): error TS2339: Property 'type' does not exist on type 'unknown'.
+src/worker.ts(5,20): error TS2307: Cannot find module 'drizzle-orm' or its corresponding type declarations.
+src/worker.ts(66,38): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+src/worker.ts(67,5): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+src/worker.ts(69,32): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+src/worker.ts(70,5): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+vite.config.ts(1,25): error TS2307: Cannot find module '@tailwindcss/vite' or its corresponding type declarations.
+vite.config.ts(2,19): error TS2307: Cannot find module '@vitejs/plugin-react' or its corresponding type declarations.
+vite.config.ts(3,18): error TS2307: Cannot find module 'path' or its corresponding type declarations.
+vite.config.ts(4,28): error TS2307: Cannot find module 'vite' or its corresponding type declarations.
+vite.config.ts(11,27): error TS2304: Cannot find name '__dirname'.
+vite.config.ts(21,12): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+vite.config.ts(23,14): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.

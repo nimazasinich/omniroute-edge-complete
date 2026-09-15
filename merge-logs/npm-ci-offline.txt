@@ -1,0 +1,4 @@
+## npm ci --offline
+npm error code ENOTCACHED
+npm error request to https://registry.npmjs.org/yocto-queue/-/yocto-queue-1.2.2.tgz failed: cache mode is 'only-if-cached' but no cached response is available.
+npm error A complete log of this run can be found in: /home/oai/.npm/_logs/2026-09-11T21_29_50_101Z-debug-0.log

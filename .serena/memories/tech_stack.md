@@ -1,0 +1,24 @@
+# Technology Stack & Environment
+
+- **Languages**: TypeScript ~5.8.2, JavaScript (ES2022)
+- **Frontend**:
+  - React 19 (`react`, `react-dom`)
+  - Vite 6 (`vite`, `@vitejs/plugin-react`)
+  - Tailwind CSS 4 (`tailwindcss`, `@tailwindcss/vite`)
+  - Icons & UI: `lucide-react`, `motion`, `clsx`, `tailwind-merge`
+- **Backend**:
+  - Hono v4 (`hono`)
+  - Node runtime adapter: `@hono/node-server`
+  - Cloudflare Worker runtime (`nodejs_compat`)
+  - Authentication & Security: `bcryptjs`, `jsonwebtoken`, constant-time safeEqual
+- **Database & ORM**:
+  - Drizzle ORM (`drizzle-orm`, `drizzle-kit`)
+  - SQLite dialect
+  - Cloudflare D1 driver (`d1-http` / native D1 binding `DB`)
+  - Local Node SQLite: `@libsql/client`
+- **Testing**:
+  - Vitest 1.6 (`vitest`, `@vitest/coverage-v8`)
+- **Deployment & Edge**:
+  - Wrangler (`wrangler.toml`, compatibility_date 2026-09-12)
+  - Dedicated worker: `omniroute-edge`
+  - Dedicated D1 database: `omniroute-edge-db`

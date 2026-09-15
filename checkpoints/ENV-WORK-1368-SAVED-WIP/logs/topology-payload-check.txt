@@ -1,0 +1,6 @@
+PASS zero providers and zero traffic stay empty/no fabricated nodes
+PASS one configured provider with no requests is not observed traffic
+PASS six observed providers are all retained and sorted by traffic
+PASS twenty providers are not silently dropped
+PASS rail pagination reaches all thirty-seven providers exactly once
+PASS formatting keeps requested dynamic values readable

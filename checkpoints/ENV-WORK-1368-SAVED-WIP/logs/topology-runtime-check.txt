@@ -1,0 +1,3 @@
+counts=0,1,3,6,10,20,30,37
+heights=230,300,480,720
+topology_runtime=PASS

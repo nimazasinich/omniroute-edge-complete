@@ -1,0 +1,17 @@
+PASS traces-route
+PASS audit-route
+PASS metrics-route
+PASS readiness-endpoint
+PASS alerts-endpoint
+PASS bootstrap-ui
+PASS admin-auth-helper
+PASS no-frontend-hardcoded-admin-secret
+PASS no-fake-2,847
+PASS no-fake-6.8 GB
+PASS no-fake-99.98
+PASS no-fake-1.24M
+PASS no-fake-$1,420
+PASS no-fake-Dynamic optimal score
+PASS no-silent-topology-provider-cap-8
+PASS no-silent-topology-source-cap-10
+summary pass=16 fail=0

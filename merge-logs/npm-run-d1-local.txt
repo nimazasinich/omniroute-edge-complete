@@ -1,0 +1,6 @@
+## npm run cf:d1:migrate:local
+
+> react-example@0.0.0 cf:d1:migrate:local
+> wrangler d1 migrations apply ai-router-db --local
+
+sh: 1: wrangler: not found

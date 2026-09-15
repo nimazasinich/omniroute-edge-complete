@@ -1,0 +1,350 @@
+TS_TSX_FILES=43
+SYNTAX_FAILURES=29
+FAIL src/App.tsx: node:internal/modules/esm/get_format:219
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".tsx" for /mnt/data/Canonical-V3.2-work/OmniRoute-Edge-Canonical-V3.1/src/App.tsx
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:219:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:245:36)
+    at checkSyntax (node:internal/main/check_syntax:69:20) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v22.16.0
+FAIL src/components/AlertsView.tsx: node:internal/modules/esm/get_format:219
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".tsx" for /mnt/data/Canonical-V3.2-work/OmniRoute-Edge-Canonical-V3.1/src/components/AlertsView.tsx
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:219:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:245:36)
+    at checkSyntax (node:internal/main/check_syntax:69:20) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v22.16.0
+FAIL src/components/AnalyticsView.tsx: node:internal/modules/esm/get_format:219
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".tsx" for /mnt/data/Canonical-V3.2-work/OmniRoute-Edge-Canonical-V3.1/src/components/AnalyticsView.tsx
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:219:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:245:36)
+    at checkSyntax (node:internal/main/check_syntax:69:20) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v22.16.0
+FAIL src/components/ApiKeysView.tsx: node:internal/modules/esm/get_format:219
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".tsx" for /mnt/data/Canonical-V3.2-work/OmniRoute-Edge-Canonical-V3.1/src/components/ApiKeysView.tsx
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:219:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:245:36)
+    at checkSyntax (node:internal/main/check_syntax:69:20) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v22.16.0
+FAIL src/components/AppShell.tsx: node:internal/modules/esm/get_format:219
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".tsx" for /mnt/data/Canonical-V3.2-work/OmniRoute-Edge-Canonical-V3.1/src/components/AppShell.tsx
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:219:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:245:36)
+    at checkSyntax (node:internal/main/check_syntax:69:20) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v22.16.0
+FAIL src/components/AuditLogView.tsx: node:internal/modules/esm/get_format:219
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".tsx" for /mnt/data/Canonical-V3.2-work/OmniRoute-Edge-Canonical-V3.1/src/components/AuditLogView.tsx
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:219:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:245:36)
+    at checkSyntax (node:internal/main/check_syntax:69:20) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v22.16.0
+FAIL src/components/BootstrapAdminCard.tsx: node:internal/modules/esm/get_format:219
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".tsx" for /mnt/data/Canonical-V3.2-work/OmniRoute-Edge-Canonical-V3.1/src/components/BootstrapAdminCard.tsx
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:219:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:245:36)
+    at checkSyntax (node:internal/main/check_syntax:69:20) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v22.16.0
+FAIL src/components/DashboardView.tsx: node:internal/modules/esm/get_format:219
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".tsx" for /mnt/data/Canonical-V3.2-work/OmniRoute-Edge-Canonical-V3.1/src/components/DashboardView.tsx
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:219:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:245:36)
+    at checkSyntax (node:internal/main/check_syntax:69:20) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v22.16.0
+FAIL src/components/FirewallView.tsx: node:internal/modules/esm/get_format:219
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".tsx" for /mnt/data/Canonical-V3.2-work/OmniRoute-Edge-Canonical-V3.1/src/components/FirewallView.tsx
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:219:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:245:36)
+    at checkSyntax (node:internal/main/check_syntax:69:20) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v22.16.0
+FAIL src/components/GlobalEdgeTrafficCard.tsx: node:internal/modules/esm/get_format:219
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".tsx" for /mnt/data/Canonical-V3.2-work/OmniRoute-Edge-Canonical-V3.1/src/components/GlobalEdgeTrafficCard.tsx
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:219:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:245:36)
+    at checkSyntax (node:internal/main/check_syntax:69:20) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v22.16.0
+FAIL src/components/Header.tsx: node:internal/modules/esm/get_format:219
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".tsx" for /mnt/data/Canonical-V3.2-work/OmniRoute-Edge-Canonical-V3.1/src/components/Header.tsx
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:219:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:245:36)
+    at checkSyntax (node:internal/main/check_syntax:69:20) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v22.16.0
+FAIL src/components/KpiCard.tsx: node:internal/modules/esm/get_format:219
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".tsx" for /mnt/data/Canonical-V3.2-work/OmniRoute-Edge-Canonical-V3.1/src/components/KpiCard.tsx
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:219:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:245:36)
+    at checkSyntax (node:internal/main/check_syntax:69:20) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v22.16.0
+FAIL src/components/LogsView.tsx: node:internal/modules/esm/get_format:219
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".tsx" for /mnt/data/Canonical-V3.2-work/OmniRoute-Edge-Canonical-V3.1/src/components/LogsView.tsx
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:219:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:245:36)
+    at checkSyntax (node:internal/main/check_syntax:69:20) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v22.16.0
+FAIL src/components/ModelsView.tsx: node:internal/modules/esm/get_format:219
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".tsx" for /mnt/data/Canonical-V3.2-work/OmniRoute-Edge-Canonical-V3.1/src/components/ModelsView.tsx
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:219:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:245:36)
+    at checkSyntax (node:internal/main/check_syntax:69:20) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v22.16.0
+FAIL src/components/ProviderHealthCard.tsx: node:internal/modules/esm/get_format:219
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".tsx" for /mnt/data/Canonical-V3.2-work/OmniRoute-Edge-Canonical-V3.1/src/components/ProviderHealthCard.tsx
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:219:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:245:36)
+    at checkSyntax (node:internal/main/check_syntax:69:20) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v22.16.0
+FAIL src/components/ProviderLogos.tsx: node:internal/modules/esm/get_format:219
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".tsx" for /mnt/data/Canonical-V3.2-work/OmniRoute-Edge-Canonical-V3.1/src/components/ProviderLogos.tsx
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:219:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:245:36)
+    at checkSyntax (node:internal/main/check_syntax:69:20) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v22.16.0
+FAIL src/components/ProvidersView.tsx: node:internal/modules/esm/get_format:219
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".tsx" for /mnt/data/Canonical-V3.2-work/OmniRoute-Edge-Canonical-V3.1/src/components/ProvidersView.tsx
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:219:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:245:36)
+    at checkSyntax (node:internal/main/check_syntax:69:20) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v22.16.0
+FAIL src/components/RecentDecisionsTable.tsx: node:internal/modules/esm/get_format:219
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".tsx" for /mnt/data/Canonical-V3.2-work/OmniRoute-Edge-Canonical-V3.1/src/components/RecentDecisionsTable.tsx
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:219:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:245:36)
+    at checkSyntax (node:internal/main/check_syntax:69:20) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v22.16.0
+FAIL src/components/RoutingRulesView.tsx: node:internal/modules/esm/get_format:219
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".tsx" for /mnt/data/Canonical-V3.2-work/OmniRoute-Edge-Canonical-V3.1/src/components/RoutingRulesView.tsx
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:219:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:245:36)
+    at checkSyntax (node:internal/main/check_syntax:69:20) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v22.16.0
+FAIL src/components/RuntimeResourcesCard.tsx: node:internal/modules/esm/get_format:219
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".tsx" for /mnt/data/Canonical-V3.2-work/OmniRoute-Edge-Canonical-V3.1/src/components/RuntimeResourcesCard.tsx
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:219:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:245:36)
+    at checkSyntax (node:internal/main/check_syntax:69:20) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v22.16.0
+FAIL src/components/SecurityPoliciesView.tsx: node:internal/modules/esm/get_format:219
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".tsx" for /mnt/data/Canonical-V3.2-work/OmniRoute-Edge-Canonical-V3.1/src/components/SecurityPoliciesView.tsx
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:219:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:245:36)
+    at checkSyntax (node:internal/main/check_syntax:69:20) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v22.16.0
+FAIL src/components/SettingsView.tsx: node:internal/modules/esm/get_format:219
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".tsx" for /mnt/data/Canonical-V3.2-work/OmniRoute-Edge-Canonical-V3.1/src/components/SettingsView.tsx
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:219:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:245:36)
+    at checkSyntax (node:internal/main/check_syntax:69:20) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v22.16.0
+FAIL src/components/Sidebar.tsx: node:internal/modules/esm/get_format:219
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".tsx" for /mnt/data/Canonical-V3.2-work/OmniRoute-Edge-Canonical-V3.1/src/components/Sidebar.tsx
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:219:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:245:36)
+    at checkSyntax (node:internal/main/check_syntax:69:20) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v22.16.0
+FAIL src/components/StatusBadge.tsx: node:internal/modules/esm/get_format:219
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".tsx" for /mnt/data/Canonical-V3.2-work/OmniRoute-Edge-Canonical-V3.1/src/components/StatusBadge.tsx
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:219:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:245:36)
+    at checkSyntax (node:internal/main/check_syntax:69:20) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v22.16.0
+FAIL src/components/TopologyMap.tsx: node:internal/modules/esm/get_format:219
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".tsx" for /mnt/data/Canonical-V3.2-work/OmniRoute-Edge-Canonical-V3.1/src/components/TopologyMap.tsx
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:219:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:245:36)
+    at checkSyntax (node:internal/main/check_syntax:69:20) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v22.16.0
+FAIL src/components/TopologyView.tsx: node:internal/modules/esm/get_format:219
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".tsx" for /mnt/data/Canonical-V3.2-work/OmniRoute-Edge-Canonical-V3.1/src/components/TopologyView.tsx
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:219:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:245:36)
+    at checkSyntax (node:internal/main/check_syntax:69:20) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v22.16.0
+FAIL src/components/TracesView.tsx: node:internal/modules/esm/get_format:219
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".tsx" for /mnt/data/Canonical-V3.2-work/OmniRoute-Edge-Canonical-V3.1/src/components/TracesView.tsx
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:219:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:245:36)
+    at checkSyntax (node:internal/main/check_syntax:69:20) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v22.16.0
+FAIL src/components/WorldMapPattern.tsx: node:internal/modules/esm/get_format:219
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".tsx" for /mnt/data/Canonical-V3.2-work/OmniRoute-Edge-Canonical-V3.1/src/components/WorldMapPattern.tsx
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:219:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:245:36)
+    at checkSyntax (node:internal/main/check_syntax:69:20) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v22.16.0
+FAIL src/main.tsx: node:internal/modules/esm/get_format:219
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".tsx" for /mnt/data/Canonical-V3.2-work/OmniRoute-Edge-Canonical-V3.1/src/main.tsx
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:219:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:245:36)
+    at checkSyntax (node:internal/main/check_syntax:69:20) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v22.16.0

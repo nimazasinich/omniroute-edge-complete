@@ -1,0 +1,40 @@
+--- fixed silent topology caps ---
+--- generic topology slices ---
+src/components/TopologyMap.tsx:46:  return value.charAt(0).toUpperCase() + value.slice(1);
+src/topology/layout.ts:75:  return items.slice(layout.startIndex, layout.endIndex);
+src/server/app.ts:45:  const prefix = token.slice(0, 12);
+src/server/app.ts:65:  const token = authHeader.slice(7);
+src/server/app.ts:295:    keyPrefix: raw.slice(0, 12),
+src/server/app.ts:960:              const chunk = buffer.slice(0, idx);
+src/server/app.ts:961:              buffer = buffer.slice(idx + 2);
+src/server/app.ts:1213:    keyPrefix: rawKey.slice(0, 12),
+--- fake UI value probes ---
+src/server/__tests__/topology.test.ts:34:      providers: [provider('openai', 'OpenAI')],
+src/server/__tests__/topology.test.ts:40:      label: 'OpenAI',
+src/server/__tests__/topology.test.ts:53:    const providers = Array.from({ length: count }, (_, index) => provider(`p-${index}`, index === count - 1 ? 'Very-Long-Enterprise-OpenAI-Compatible-Provider' : `Provider ${index}`));
+src/server/__tests__/topology.test.ts:57:    expect(topology.nodes.providers.some((node) => node.label === 'Very-Long-Enterprise-OpenAI-Compatible-Provider')).toBe(true);
+src/server/firewall.ts:22:  /sk-[a-zA-Z0-9]{20,}/,            // OpenAI-style keys
+src/server/db/schema.ts:57:// ─── Requests (every gateway call, OpenAI-compatible surface) ─────────────
+src/server/app.ts:784:// GATEWAY API — OpenAI-compatible surface (gateway-key auth)
+src/components/TopologyView.tsx:193:                  Normalizes client requests from OpenAI-compatible payloads, Anthropic structures, and Gemini schemas into a unified JSON format with client identity tagging.
+src/components/ProviderLogos.tsx:4:export const OpenAILogo: React.FC<{ size?: number; className?: string }> = ({ size = 18, className = '' }) => (
+src/components/ProviderLogos.tsx:22:export const AnthropicLogo: React.FC<{ size?: number; className?: string }> = ({ size = 18, className = '' }) => (
+src/components/ProviderLogos.tsx:70:export const MistralLogo: React.FC<{ size?: number; className?: string }> = ({ size = 18, className = '' }) => (
+--- topology endpoints ---
+src/server/app.ts:15:import { buildTopologyPayload } from '../topology/payload';
+src/server/app.ts:330:adminApp.get('/topology', async (c) => {
+src/server/app.ts:523:app.get('/api/topology', async (c) => {
+src/components/TopologyMap.tsx:6:import { buildRailLayout, pageItems } from '../topology/layout';
+src/components/TopologyMap.tsx:7:import { formatTopologyCount, formatTopologyLatency, formatTopologyPercent } from '../topology/format';
+src/components/TopologyMap.tsx:94:  const topology = data.topology?.nodes;
+src/components/TopologyMap.tsx:95:  const applicationNodes: TopologyApplicationNode[] = topology?.applications ?? [];
+src/components/TopologyMap.tsx:96:  const providerNodes: TopologyProviderNode[] = topology?.providers ?? [];
+src/components/TopologyMap.tsx:97:  const totalRequests = topology?.router.totalRequestsLast24h ?? 0;
+src/components/TopologyMap.tsx:200:              Backend-driven topology: observed sources → Cloudflare edge → AI router → configured and observed providers.
+src/components/TopologyMap.tsx:368:            <span className="text-[9px] font-medium">{topology?.edge.label ?? 'Cloudflare Edge'} · {formatTopologyCount(totalRequests)} observed requests</span>
+src/components/TopologyView.tsx:10:import { formatTopologyLatency, formatTopologyPercent } from '../topology/format';
+src/components/TopologyView.tsx:42:  const totalObservedTopologyRequests = data.topology?.nodes.router.totalRequestsLast24h ?? 0;
+src/components/TopologyView.tsx:46:    return data.topology?.nodes.providers.find((node) => node.id === selectedNode.provider.id) ?? null;
+src/components/TopologyView.tsx:47:  }, [data.topology, selectedNode]);
+src/components/TopologyView.tsx:361:                      {data.topology?.nodes.providers.filter(p => p.health === 'healthy').length ?? 0} / {data.topology?.nodes.providers.length ?? 0}
+src/components/TopologyView.tsx:409:                  Edge is shown as a topology stage only; request totals below come from observed backend routing history.

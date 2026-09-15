@@ -1,0 +1,260 @@
+
+> omniroute-edge@3.2.0 test:node
+> node --experimental-strip-types --test test-node/*.test.mjs
+
+TAP version 13
+# (node:4274) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: D1 gateway telemetry stores edge facts without inventing provider/model
+ok 1 - D1 gateway telemetry stores edge facts without inventing provider/model
+  ---
+  duration_ms: 1.838799
+  type: 'test'
+  ...
+# (node:4275) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: origin validation is fail-closed and allows only https or localhost http
+ok 2 - origin validation is fail-closed and allows only https or localhost http
+  ---
+  duration_ms: 2.372653
+  type: 'test'
+  ...
+# Subtest: forward headers strip client auth and edge identity headers
+ok 3 - forward headers strip client auth and edge identity headers
+  ---
+  duration_ms: 65.389185
+  type: 'test'
+  ...
+# Subtest: gateway rejects bad auth before origin fetch
+ok 4 - gateway rejects bad auth before origin fetch
+  ---
+  duration_ms: 4.412165
+  type: 'test'
+  ...
+# Subtest: gateway rejects when rate limiter is not configured
+ok 5 - gateway rejects when rate limiter is not configured
+  ---
+  duration_ms: 4.079103
+  type: 'test'
+  ...
+# Subtest: rate-limited request returns 429 and records honest telemetry
+ok 6 - rate-limited request returns 429 and records honest telemetry
+  ---
+  duration_ms: 13.436749
+  type: 'test'
+  ...
+# Subtest: successful upstream response preserves stream and routing authority headers
+ok 7 - successful upstream response preserves stream and routing authority headers
+  ---
+  duration_ms: 7.041179
+  type: 'test'
+  ...
+# Subtest: origin network failure is an honest 502 without edge fallback
+ok 8 - origin network failure is an honest 502 without edge fallback
+  ---
+  duration_ms: 1.588016
+  type: 'test'
+  ...
+# Subtest: browser admin auth never falls back to a default secret
+ok 9 - browser admin auth never falls back to a default secret
+  ---
+  duration_ms: 9.39984
+  type: 'test'
+  ...
+# Subtest: local database bootstrap never hard-codes admin_secret
+ok 10 - local database bootstrap never hard-codes admin_secret
+  ---
+  duration_ms: 18.853548
+  type: 'test'
+  ...
+# Subtest: frontend does not present the decorative login/loading flow as authentication
+ok 11 - frontend does not present the decorative login/loading flow as authentication
+  ---
+  duration_ms: 11.564897
+  type: 'test'
+  ...
+# Subtest: canonical UI does not expose local provider edit modal
+ok 12 - canonical UI does not expose local provider edit modal
+  ---
+  duration_ms: 11.604036
+  type: 'test'
+  ...
+# Subtest: control-plane pages do not claim a local router or active prompt firewall
+ok 13 - control-plane pages do not claim a local router or active prompt firewall
+  ---
+  duration_ms: 11.071196
+  type: 'test'
+  ...
+# Subtest: local Node DB upgrades existing requests tables for V3 telemetry
+ok 14 - local Node DB upgrades existing requests tables for V3 telemetry
+  ---
+  duration_ms: 12.454683
+  type: 'test'
+  ...
+# Subtest: provider and model pages do not expose local routing mutations
+ok 15 - provider and model pages do not expose local routing mutations
+  ---
+  duration_ms: 13.514117
+  type: 'test'
+  ...
+# Subtest: settings view does not claim a local routing engine or inline firewall
+ok 16 - settings view does not claim a local routing engine or inline firewall
+  ---
+  duration_ms: 2.081666
+  type: 'test'
+  ...
+# Subtest: dashboard data no longer carries obsolete local router settings type
+ok 17 - dashboard data no longer carries obsolete local router settings type
+  ---
+  duration_ms: 0.29053
+  type: 'test'
+  ...
+# Subtest: gateway telemetry columns exist in schema and migration SQL
+ok 18 - gateway telemetry columns exist in schema and migration SQL
+  ---
+  duration_ms: 13.220979
+  type: 'test'
+  ...
+# Subtest: topology workspace is read-only and does not claim local scoring/firewall execution
+ok 19 - topology workspace is read-only and does not claim local scoring/firewall execution
+  ---
+  duration_ms: 11.683722
+  type: 'test'
+  ...
+# Subtest: canonical V3 contains the approved dashboard UI structure
+ok 20 - canonical V3 contains the approved dashboard UI structure
+  ---
+  duration_ms: 16.394891
+  type: 'test'
+  ...
+# Subtest: dashboard source does not hard-code screenshot operational metrics
+ok 21 - dashboard source does not hard-code screenshot operational metrics
+  ---
+  duration_ms: 3.705147
+  type: 'test'
+  ...
+# Subtest: V3.2 exposes explicit system capability and OmniRoute status APIs
+ok 22 - V3.2 exposes explicit system capability and OmniRoute status APIs
+  ---
+  duration_ms: 22.075451
+  type: 'test'
+  ...
+# Subtest: capability contract explicitly denies unsupported local control planes
+ok 23 - capability contract explicitly denies unsupported local control planes
+  ---
+  duration_ms: 5.403807
+  type: 'test'
+  ...
+# Subtest: deploy config verifier fails closed on source placeholders and passes a verified-shaped HTTPS config
+ok 24 - deploy config verifier fails closed on source placeholders and passes a verified-shaped HTTPS config
+  ---
+  duration_ms: 387.663723
+  type: 'test'
+  ...
+# Subtest: Windows replacement workflow runs the full dependency-backed verification before build/deploy
+ok 25 - Windows replacement workflow runs the full dependency-backed verification before build/deploy
+  ---
+  duration_ms: 4.313423
+  type: 'test'
+  ...
+# Subtest: logs page exposes only observed request facts and nullable usage/cost
+ok 26 - logs page exposes only observed request facts and nullable usage/cost
+  ---
+  duration_ms: 14.720864
+  type: 'test'
+  ...
+# Subtest: traces page is an edge request trace, not a fabricated routing score explorer
+ok 27 - traces page is an edge request trace, not a fabricated routing score explorer
+  ---
+  duration_ms: 4.718736
+  type: 'test'
+  ...
+# Subtest: sidebar does not present legacy provider snapshot health as live network health
+ok 28 - sidebar does not present legacy provider snapshot health as live network health
+  ---
+  duration_ms: 4.685391
+  type: 'test'
+  ...
+# Subtest: alerts copy describes the actual request-derived source
+ok 29 - alerts copy describes the actual request-derived source
+  ---
+  duration_ms: 1.201444
+  type: 'test'
+  ...
+# Subtest: traces API does not advertise candidate scoring it does not collect
+ok 30 - traces API does not advertise candidate scoring it does not collect
+  ---
+  duration_ms: 1.675855
+  type: 'test'
+  ...
+# Subtest: audit log does not invent a current timestamp when source timestamp is absent
+ok 31 - audit log does not invent a current timestamp when source timestamp is absent
+  ---
+  duration_ms: 7.655827
+  type: 'test'
+  ...
+# Subtest: dashboard and navigation do not label generic edge outcomes as threats, routing decisions, or an active AI firewall
+ok 32 - dashboard and navigation do not label generic edge outcomes as threats, routing decisions, or an active AI firewall
+  ---
+  duration_ms: 7.325665
+  type: 'test'
+  ...
+# Subtest: topology feature badges describe implemented edge capabilities instead of screenshot-only products
+ok 33 - topology feature badges describe implemented edge capabilities instead of screenshot-only products
+  ---
+  duration_ms: 1.961369
+  type: 'test'
+  ...
+# Subtest: alerts distinguish API-unavailable from a real empty alert dataset
+ok 34 - alerts distinguish API-unavailable from a real empty alert dataset
+  ---
+  duration_ms: 4.564758
+  type: 'test'
+  ...
+# Subtest: header and sidebar do not invent environment, operator identity, or gateway health
+ok 35 - header and sidebar do not invent environment, operator identity, or gateway health
+  ---
+  duration_ms: 2.33144
+  type: 'test'
+  ...
+# Subtest: topology and header controls do not imply filtering/search capabilities they do not execute
+ok 36 - topology and header controls do not imply filtering/search capabilities they do not execute
+  ---
+  duration_ms: 1.561002
+  type: 'test'
+  ...
+# (node:4445) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: requested model is extracted only from a real bounded JSON request
+ok 37 - requested model is extracted only from a real bounded JSON request
+  ---
+  duration_ms: 52.95258
+  type: 'test'
+  ...
+# Subtest: telemetry schema has nullable observed token/cost fields instead of treating legacy zero as truth
+ok 38 - telemetry schema has nullable observed token/cost fields instead of treating legacy zero as truth
+  ---
+  duration_ms: 9.805305
+  type: 'test'
+  ...
+# Subtest: V3.2 completes every major control and observability surface
+ok 39 - V3.2 completes every major control and observability surface
+  ---
+  duration_ms: 30.669091
+  type: 'test'
+  ...
+# Subtest: completed UI still forbids fabricated screenshot metrics and local router claims
+ok 40 - completed UI still forbids fabricated screenshot metrics and local router claims
+  ---
+  duration_ms: 7.844744
+  type: 'test'
+  ...
+1..40
+# tests 40
+# suites 0
+# pass 40
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2139.61736

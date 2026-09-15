@@ -1,0 +1,14 @@
+{
+  "ok": false,
+  "root": "C:\\project\\OmniRoute_SecureAIRouter_\\OmniRoute-Edge-COMPLETE-PROJECT-WITH-DEPLOYER\\OmniRoute-Edge-Complete-Project",
+  "scannedFiles": 172,
+  "findings": [
+    {
+      "id": "math-random",
+      "severity": "warning",
+      "file": "scripts/migrate-omniroute.mjs",
+      "line": 191,
+      "excerpt": "Math.random("
+    }
+  ]
+}

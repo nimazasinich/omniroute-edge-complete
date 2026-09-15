@@ -1,0 +1,103 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);background:transparent;color:var(--text-primary)}
+h2.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+.wrap{padding:1rem 0}
+.top-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem}
+.top-bar h3{font-size:16px;font-weight:500}
+.legend{display:flex;gap:16px;font-size:12px;color:var(--text-secondary)}
+.leg{display:flex;align-items:center;gap:6px}
+.dot{width:10px;height:10px;border-radius:2px}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:1.5rem}
+.kpi{background:var(--surface-1);border-radius:var(--radius);padding:14px;border:0.5px solid var(--border)}
+.kpi-label{font-size:11px;color:var(--text-secondary);margin-bottom:4px}
+.kpi-val{font-size:22px;font-weight:500}
+.kpi-sub{font-size:11px;color:var(--text-muted);margin-top:2px}
+.section-label{font-size:11px;font-weight:500;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
+.page-grid{display:flex;flex-direction:column;gap:8px}
+.page-row{background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:12px 14px;cursor:pointer;transition:border-color .15s}
+.page-row:hover{border-color:var(--border-strong)}
+.page-row.expanded{border-color:var(--border-accent)}
+.row-top{display:flex;align-items:center;gap:10px}
+.page-name{font-size:13px;font-weight:500;min-width:130px}
+.page-path{font-size:11px;color:var(--text-muted);font-family:var(--font-mono);min-width:80px}
+.bar-wrap{flex:1;height:8px;background:var(--surface-0);border-radius:4px;overflow:hidden}
+.bar-fill{height:100%;border-radius:4px;transition:width .4s}
+.score-num{font-size:13px;font-weight:500;min-width:32px;text-align:right}
+.grade-badge{font-size:11px;font-weight:500;padding:2px 8px;border-radius:var(--radius);min-width:28px;text-align:center}
+.chevron{font-size:16px;color:var(--text-muted);transition:transform .2s;margin-left:4px}
+.expanded .chevron{transform:rotate(180deg)}
+.details{display:none;margin-top:12px;border-top:0.5px solid var(--border);padding-top:12px}
+.expanded .details{display:block}
+.gap-list{display:flex;flex-direction:column;gap:6px}
+.gap-item{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:var(--text-secondary);line-height:1.5}
+.gap-dot{width:6px;height:6px;border-radius:50%;margin-top:5px;flex-shrink:0}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tag{font-size:11px;padding:2px 8px;border-radius:var(--radius);border:0.5px solid var(--border);color:var(--text-secondary);background:var(--surface-1)}
+.tag.red{border-color:#f09595;color:#a32d2d;background:#fcebeb}
+.tag.amber{border-color:#FAC775;color:#854F0B;background:#FAEEDA}
+.tag.green{border-color:#C0DD97;color:#3B6D11;background:#EAF3DE}
+</style>
+<h2 class="sr-only">OmniRoute UI audit: completeness scores for all 14 pages compared to the dashboard baseline</h2>
+<div class="wrap">
+<div class="top-bar">
+  <h3>UI completeness audit — all pages vs dashboard baseline</h3>
+  <div class="legend">
+    <div class="leg"><div class="dot" style="background:#2a78d6"></div>Good (≥80)</div>
+    <div class="leg"><div class="dot" style="background:#eda100"></div>Needs work (60–79)</div>
+    <div class="leg"><div class="dot" style="background:#e34948"></div>Critical gap (&lt;60)</div>
+  </div>
+</div>
+<div class="kpi-row">
+  <div class="kpi"><div class="kpi-label">Pages audited</div><div class="kpi-val">14</div><div class="kpi-sub">all routes in App.tsx</div></div>
+  <div class="kpi"><div class="kpi-label">Fully complete</div><div class="kpi-val" style="color:#1baf7a">2</div><div class="kpi-sub">Logs, API Keys</div></div>
+  <div class="kpi"><div class="kpi-label">Need major work</div><div class="kpi-val" style="color:#eb6834">8</div><div class="kpi-sub">missing charts/filters/KPIs</div></div>
+  <div class="kpi"><div class="kpi-label">Critical gaps</div><div class="kpi-val" style="color:#e34948">4</div><div class="kpi-sub">skeleton or static content</div></div>
+</div>
+<div class="section-label">Click any page to expand gaps</div>
+<div class="page-grid" id="grid"></div>
+</div>
+<script>
+const isDark=document.documentElement.dataset.mode==='dark'||matchMedia('(prefers-color-scheme:dark)').matches;
+const pages=[
+  {name:'Dashboard',path:'/',score:100,grade:'A+',gaps:[],tags:['reference baseline'],cat:'ref'},
+  {name:'API Keys',path:'/keys',score:88,grade:'B+',gaps:['Missing last-used timestamp column','No per-key usage stats','No key rotation reminder/expiry','Revoke confirm uses native alert() instead of inline modal'],tags:['modal ✓','create flow ✓','security warning ✓'],cat:'good'},
+  {name:'Logs',path:'/logs',score:85,grade:'B',gaps:['No pagination (loads 100 rows, no load-more)','No date-range filter (only status + search)','No column sorting','No row expand / detail drawer for error messages','No auto-refresh toggle','No CSV export button','Stat tiles at top lack icons (dashboard KPIs all have colored icons + bg)'],tags:['search ✓','status filter ✓','table 9 cols ✓'],cat:'good'},
+  {name:'Traces',path:'/traces',score:78,grade:'B-',gaps:['No status-code filter (only free-text search)','No provider filter or request-type filter','Detail panel has no waterfall / timeline visualization','Streaming shown as plain text "Yes/No" not a visual badge','List items have no color-coded status dot','Stat tiles lack icons'],tags:['master-detail ✓','search ✓','correlation ID ✓'],cat:'needs'},
+  {name:'Alerts',path:'/alerts',score:75,grade:'B-',gaps:['No alert acknowledgement / dismiss action','No time-based grouping or date separators','No source filter (only severity segmented control)','No auto-refresh toggle','No alert-frequency sparkline trend','Stat tile "Synthetic incidents: None" is semantically odd vs dashboard KPI style','Alert cards lack left-accent border for severity visual impact'],tags:['severity filter ✓','card layout ✓','navigate to source ✓'],cat:'needs'},
+  {name:'Topology',path:'/topology',score:72,grade:'B-',gaps:['Inspector panel has only 4 bare key-value pairs — no metric strip','No KPI row at top (dashboard KPI strip is core to the design language)','Provider list in inspector is plain text, no status dots or health color','No topology telemetry cards alongside the map (Dashboard has Runtime + Security panels)','Filter feedback is just list shrinking — no count badge or chip'],tags:['TopologyMap shared ✓','provider filter ✓','refresh ✓'],cat:'needs'},
+  {name:'Analytics',path:'/analytics',score:70,grade:'B-',gaps:['No time-range selector — window is API-driven only','Token usage section is plain text values, no chart','Cost trend has no visualization','Security-by-severity data present in types but not rendered here','Request status breakdown uses pill chips instead of visual bars','Metric tiles have no sparklines (dashboard KPI tiles have sparklines)','Entire file is single-line minified JSX — unmaintainable'],tags:['traffic chart ✓','provider attribution ✓','request types ✓'],cat:'needs'},
+  {name:'Metrics',path:'/metrics',score:68,grade:'C+',gaps:['CPU / memory metrics are tiles only — no gauge or progress ring visualization','No uptime visualization (just "Xh Ym" text string)','Bar chart has no axis labels, only HTML title tooltip — no hover card','No RSS-vs-heap comparison visualization','No CPU trend chart over time','Provider attribution cards lack cost trend sparkline'],tags:['bar chart ✓','6 metric tiles ✓','provider rows ✓'],cat:'needs'},
+  {name:'Routing Status',path:'/routing',score:62,grade:'C+',gaps:['No routing-flow diagram (all text table)','No request-type distribution chart','No latency histogram or distribution','OmniRoute connectivity is just a MetricTile with text — no visual indicator','Table cost column is nearly all "—" with no empty-state messaging','No filter for error-labelled outcomes only'],tags:['search ✓','type filter ✓','PageHeader ✓'],cat:'needs'},
+  {name:'Providers',path:'/providers',score:60,grade:'C+',gaps:['Table-only — no card-grid alternative view','Health status shown as text badge only, no visual gauge','Traffic share column has no bar visualization (just "X%")','No provider latency sparklines','Latency column empty when health source is not omniroute — no explanation inline','Bottom info-row cards are minimal (3 static tips)'],tags:['search ✓','filter ✓','5 metric tiles ✓'],cat:'needs'},
+  {name:'Firewall',path:'/firewall',score:55,grade:'C',gaps:['NO chart of events over time — dashboard Security panel has a live table, this page has only a flat table','No top-event-types breakdown chart','No IP frequency / top-attacker table','Severity distribution is not visualized anywhere on page','Entire component is one-line compressed JSX — extremely hard to maintain','MetricTile "Prompt firewall: Not integrated" conveys nothing actionable'],tags:['search ✓','severity filter ✓','action filter ✓'],cat:'critical'},
+  {name:'Settings',path:'/settings',score:52,grade:'C',gaps:['OmniRoute connectivity section is pure key-value text — no visual status indicator or live ping button','Capability matrix uses PostureRow (icon + text) — no visual gauge or posture score','Admin token input has no strength feedback or validation','Missing: version info card and Node runtime uptime','Missing: alert/banner when OmniRoute is unreachable','Telemetry sources section is just static text cards — no live state','Readiness section feels appended at the bottom rather than integrated'],tags:['admin token ✓','bootstrap card ✓','capability rows ✓'],cat:'critical'},
+  {name:'Security Policies',path:'/policies',score:45,grade:'D+',gaps:['NO security posture score or gauge — just a count "2/5"','Capability cards are purely static — no dynamic live state updates','Security events section in this page shows tiny 3-field rows, not a proper table','Readiness issues section is a basic list — no severity coloring or actions','No visual enforcement status (just green/gray dot)','Missing: policy timeline or last-enforcement timestamp','Missing: link to Firewall page for event drill-down'],tags:['capability matrix ✓','readiness issues ✓'],cat:'critical'},
+  {name:'Models',path:'/models',score:42,grade:'D+',gaps:['Table-only view — no card grid or model detail panel','Capability tags are plain comma text, not colored chips','Context window is a raw number — no visual scale or bar','Cost metadata shows raw floats, not formatted as $/1k tokens','No provider grouping or tree-view by provider','Live OmniRoute model IDs are pill chips — good, but section needs a metric tile with count','Enabled/Disabled is just "Yes/No" text — needs a toggle-style badge'],tags:['3 filters ✓','live model IDs section ✓'],cat:'critical'},
+];
+const colors={ref:'#888780',good:'#2a78d6',needs:'#eda100',critical:'#e34948'};
+const grid=document.getElementById('grid');
+pages.forEach((p,i)=>{
+  const pct=p.score;
+  const col=colors[p.cat];
+  const el=document.createElement('div');
+  el.className='page-row';
+  el.innerHTML=`<div class="row-top">
+    <span class="page-name">${p.name}</span>
+    <span class="page-path">${p.path}</span>
+    <div class="bar-wrap"><div class="bar-fill" style="width:${pct}%;background:${col}"></div></div>
+    <span class="score-num" style="color:${col}">${pct}</span>
+    <span class="grade-badge" style="background:${col}22;color:${col};border:0.5px solid ${col}55">${p.grade}</span>
+    ${p.gaps.length?`<span class="chevron">⌄</span>`:''}
+  </div>
+  ${p.gaps.length?`<div class="details">
+    <div class="gap-list">${p.gaps.map(g=>`<div class="gap-item"><div class="gap-dot" style="background:${col}"></div><span>${g}</span></div>`).join('')}</div>
+    <div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}
+    ${p.score<60?'<span class="tag red">critical gaps</span>':p.score<80?'<span class="tag amber">needs work</span>':'<span class="tag green">mostly complete</span>'}
+    </div>
+  </div>`:''}`;
+  if(p.gaps.length) el.addEventListener('click',()=>el.classList.toggle('expanded'));
+  grid.appendChild(el);
+});
+</script>

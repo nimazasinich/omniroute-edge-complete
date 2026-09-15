@@ -1,0 +1,66 @@
+error TS2688: Cannot find type definition file for 'babel__core'.
+  The file is in the program because:
+    Entry point for implicit type library 'babel__core'
+error TS2688: Cannot find type definition file for 'babel__generator'.
+  The file is in the program because:
+    Entry point for implicit type library 'babel__generator'
+error TS2688: Cannot find type definition file for 'babel__template'.
+  The file is in the program because:
+    Entry point for implicit type library 'babel__template'
+error TS2688: Cannot find type definition file for 'babel__traverse'.
+  The file is in the program because:
+    Entry point for implicit type library 'babel__traverse'
+error TS2688: Cannot find type definition file for 'bcryptjs'.
+  The file is in the program because:
+    Entry point for implicit type library 'bcryptjs'
+error TS2688: Cannot find type definition file for 'body-parser'.
+  The file is in the program because:
+    Entry point for implicit type library 'body-parser'
+error TS2688: Cannot find type definition file for 'connect'.
+  The file is in the program because:
+    Entry point for implicit type library 'connect'
+error TS2688: Cannot find type definition file for 'estree'.
+  The file is in the program because:
+    Entry point for implicit type library 'estree'
+error TS2688: Cannot find type definition file for 'express'.
+  The file is in the program because:
+    Entry point for implicit type library 'express'
+error TS2688: Cannot find type definition file for 'express-serve-static-core'.
+  The file is in the program because:
+    Entry point for implicit type library 'express-serve-static-core'
+error TS2688: Cannot find type definition file for 'http-errors'.
+  The file is in the program because:
+    Entry point for implicit type library 'http-errors'
+error TS2688: Cannot find type definition file for 'jsonwebtoken'.
+  The file is in the program because:
+    Entry point for implicit type library 'jsonwebtoken'
+error TS2688: Cannot find type definition file for 'mime'.
+  The file is in the program because:
+    Entry point for implicit type library 'mime'
+error TS2688: Cannot find type definition file for 'ms'.
+  The file is in the program because:
+    Entry point for implicit type library 'ms'
+error TS2688: Cannot find type definition file for 'node'.
+  The file is in the program because:
+    Entry point for implicit type library 'node'
+error TS2688: Cannot find type definition file for 'qs'.
+  The file is in the program because:
+    Entry point for implicit type library 'qs'
+error TS2688: Cannot find type definition file for 'range-parser'.
+  The file is in the program because:
+    Entry point for implicit type library 'range-parser'
+error TS2688: Cannot find type definition file for 'retry'.
+  The file is in the program because:
+    Entry point for implicit type library 'retry'
+error TS2688: Cannot find type definition file for 'send'.
+  The file is in the program because:
+    Entry point for implicit type library 'send'
+error TS2688: Cannot find type definition file for 'serve-static'.
+  The file is in the program because:
+    Entry point for implicit type library 'serve-static'
+error TS2688: Cannot find type definition file for 'uuid'.
+  The file is in the program because:
+    Entry point for implicit type library 'uuid'
+error TS2688: Cannot find type definition file for 'ws'.
+  The file is in the program because:
+    Entry point for implicit type library 'ws'

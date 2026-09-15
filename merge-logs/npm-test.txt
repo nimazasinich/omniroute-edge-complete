@@ -1,0 +1,6 @@
+## npm test
+
+> react-example@0.0.0 test
+> vitest run
+
+sh: 1: vitest: not found

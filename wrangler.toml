@@ -1,0 +1,36 @@
+name = "omniroute-edge"
+main = "src/worker.ts"
+compatibility_date = "2026-09-12"
+compatibility_flags = ["nodejs_compat"]
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+
+# Dedicated D1 read-model/telemetry database for OmniRoute Edge.
+# Replace the placeholder only after the target D1 database is inspected/created
+# and its identity is explicitly verified. D1 is NOT the routing authority.
+[[d1_databases]]
+binding = "DB"
+database_name = "omniroute-edge-db"
+database_id = "1cf4ec9c-656f-4125-8801-f0b1bf742233"
+migrations_dir = "drizzle"
+
+
+# Per-authenticated-key application rate limit. namespace_id is a deterministic
+# project-local integer; verify uniqueness in the target Cloudflare account before deploy.
+[[ratelimits]]
+name = "RATE_LIMITER"
+namespace_id = "2767510501"
+
+  [ratelimits.simple]
+  limit = 60
+  period = 60
+
+[vars]
+ENVIRONMENT = "production"
+ROUTING_AUTHORITY = "omniroute"
+# Fail-closed until an existing Worker-reachable direct HTTPS OmniRoute origin is explicitly set.
+# Architecture invariant: no Cloudflare Tunnel and no VPC.
+OMNIROUTE_ORIGIN = ""

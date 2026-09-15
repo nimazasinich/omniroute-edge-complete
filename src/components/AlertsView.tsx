@@ -1,0 +1,46 @@
+import React, { useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AlertTriangle, ArrowRight, Bell, CheckCircle2, XCircle } from 'lucide-react';
+import { DashboardData, OperationalAlert } from '../types';
+import { formatRelativeTime } from '../utils/formatters';
+import { DetailGrid, DetailItem, InspectorDrawer, SourcePill, WorkspaceTabs } from './WorkspacePrimitives';
+
+interface AlertsViewProps { data: DashboardData; }
+function alertAction(alert: OperationalAlert): { label: string; path: string } {
+  if (alert.actionLabel && alert.actionPath) return { label: alert.actionLabel, path: alert.actionPath };
+  if (alert.type.includes('provider')) return { label: 'Manage Providers', path: '/providers' };
+  if (alert.type.includes('security') || alert.type.includes('policy')) return { label: 'View Security Events', path: '/firewall' };
+  return { label: 'Open Settings', path: '/settings' };
+}
+
+export const AlertsView: React.FC<AlertsViewProps> = ({ data }) => {
+  const navigate = useNavigate();
+  const [severityFilter, setSeverityFilter] = useState<'all' | 'critical' | 'high' | 'medium'>('all');
+  const [sourceFilter, setSourceFilter] = useState('all');
+  const [tab, setTab] = useState('Active');
+  const [selected, setSelected] = useState<OperationalAlert | null>(null);
+  const alertsAvailable = Array.isArray(data.alerts);
+  const alerts = useMemo(() => (data.alerts ?? []).slice().sort((a,b)=>b.timestamp-a.timestamp), [data.alerts]);
+  const sources = useMemo(() => Array.from(new Set(alerts.map((alert)=>alert.source??alert.type))).sort(), [alerts]);
+  const filteredAlerts = alerts.filter((alert) => (severityFilter==='all'||alert.severity===severityFilter) && (sourceFilter==='all'||(alert.source??alert.type)===sourceFilter));
+  const criticalCount = alerts.filter((alert)=>alert.severity==='critical').length;
+
+  return <div className="flex flex-col gap-3 h-full w-full select-none overflow-y-auto pr-1">
+    <div className="card-3d-glass p-3.5 flex flex-wrap items-center justify-between gap-3 shrink-0"><div><div className="flex items-center gap-2"><div className="w-7 h-7 rounded-lg bg-rose-500/10 text-rose-600 flex items-center justify-center border border-rose-500/20"><Bell size={14}/></div><h2 className="text-[14px] font-bold text-[#0F172A]">System Operational Alerts ({alerts.length})</h2>{criticalCount>0?<SourcePill label={`${criticalCount} Critical`} tone="rose"/>:null}</div><p className="text-[10.5px] text-[#475569] mt-1">Data source: server-derived alerts from observed gateway request outcomes. No simulated timestamps, provider-health claims, or synthetic incidents.</p></div><WorkspaceTabs tabs={[{id:'Active',label:'Active',count:alerts.length},{id:'History',label:'History'},{id:'Rules',label:'Rules'}]} active={tab} onChange={setTab}/></div>
+
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-2 shrink-0"><div className="card-3d-glass p-3"><span className="text-[9px] text-slate-500">Returned alerts</span><strong className="block text-[16px]">{alertsAvailable?alerts.length:'—'}</strong><small className="text-[8.5px] text-slate-400">Data source: alert API</small></div><div className="card-3d-glass p-3"><span className="text-[9px] text-slate-500">Critical</span><strong className="block text-[16px]">{alertsAvailable?criticalCount:'—'}</strong><small className="text-[8.5px] text-slate-400">request-derived severity</small></div><div className="card-3d-glass p-3"><span className="text-[9px] text-slate-500">High</span><strong className="block text-[16px]">{alertsAvailable?alerts.filter((a)=>a.severity==='high').length:'—'}</strong><small className="text-[8.5px] text-slate-400">request-derived severity</small></div><div className="card-3d-glass p-3"><span className="text-[9px] text-slate-500">Alert persistence</span><strong className="block text-[16px]">Unavailable</strong><small className="text-[8.5px] text-slate-400">No acknowledge state claimed</small></div></div>
+
+    {tab==='Active'?<>
+      <div className="card-3d-glass p-2.5 flex flex-wrap items-center gap-2"><div className="flex items-center gap-1.5 bg-white border border-[#DCEBFA] rounded-lg p-0.5 text-[10px]">{(['all','critical','high','medium'] as const).map((value)=><button key={value} onClick={()=>setSeverityFilter(value)} className={`px-2.5 py-1 rounded-md capitalize font-medium ${severityFilter===value?'bg-[#0051C3] text-white':'text-[#64748B]'}`}>{value}</button>)}</div><select aria-label="Source filter" value={sourceFilter} onChange={(e)=>setSourceFilter(e.target.value)} className="h-[30px] rounded-lg border border-slate-200 px-2 text-[10px]"><option value="all">Source filter: All</option>{sources.map((source)=><option key={source}>{source}</option>)}</select><span className="ml-auto text-[9.5px] font-mono text-slate-500">Showing {filteredAlerts.length} of {alerts.length}</span></div>
+      {!alertsAvailable?<div className="card-3d-glass p-4 border border-amber-200 bg-amber-50/40 text-[11px] text-amber-800"><strong>Alerts unavailable.</strong> The alert API did not return a valid dataset. This is not treated as zero active alerts.</div>:null}
+      <div className="flex flex-col gap-2.5 flex-1 overflow-y-auto">{filteredAlerts.map((alert)=>{const isCritical=alert.severity==='critical';const isHigh=alert.severity==='high';const action=alertAction(alert);return <div key={alert.id} className={`card-3d-glass p-3.5 flex items-start justify-between gap-4 border ${isCritical?'border-red-200/80 bg-red-50/20':isHigh?'border-amber-200/80 bg-amber-50/20':'border-[#DCEBFA]'}`}><button onClick={()=>setSelected(alert)} className="flex flex-1 items-start gap-3 min-w-0 text-left"><div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${isCritical?'bg-[#EF4444]/15 text-[#EF4444]':isHigh?'bg-[#F59E0B]/15 text-[#D97706]':'bg-[#0051C3]/15 text-[#0051C3]'}`}>{isCritical?<XCircle size={18}/>:<AlertTriangle size={18}/>}</div><div className="min-w-0"><div className="flex items-center gap-2 min-w-0"><h3 className="text-[13px] font-bold truncate">{alert.title}</h3><SourcePill label={alert.severity} tone={isCritical?'rose':isHigh?'amber':'blue'}/><span className="text-[10px] text-[#64748B] font-mono shrink-0">{alert.source??alert.type}</span></div><p className="text-[11px] text-[#64748B] mt-1 max-w-[750px] break-words">{alert.detail||'No additional detail recorded.'}</p><div className="text-[9.5px] text-[#64748B] mt-1 font-mono">Triggered: {formatRelativeTime(alert.timestamp)}</div></div></button><button onClick={()=>navigate(action.path)} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-[#DCEBFA] text-[#0051C3] font-semibold text-[11px] shrink-0"><span>{action.label}</span><ArrowRight size={12}/></button></div>})}{alertsAvailable&&!filteredAlerts.length?<div className="card-3d-glass p-12 text-center flex flex-col items-center justify-center"><CheckCircle2 size={32} className="text-[#10B981] mb-2"/><h3 className="text-[14px] font-bold">No request-derived alerts recorded</h3><p className="text-[11px] text-[#64748B] mt-1">No alerts match the active filters.</p></div>:null}</div>
+    </>:null}
+
+    {tab==='History'?<div className="card-3d-glass p-8 text-center text-[10px] text-slate-500"><strong className="block text-[12px] text-slate-800">Alert History is not persisted by the current contract.</strong><p className="mt-2">Acknowledgement, dismissal, and resolution timestamps are therefore not fabricated.</p></div>:null}
+    {tab==='Rules'?<div className="card-3d-glass p-4"><h3 className="text-[12px] font-bold">Rules</h3><p className="mt-1 text-[9.5px] text-slate-500">Current alerts are derived server-side from observed request outcomes. Editable alert-rule persistence is not exposed by this build.</p><div className="mt-3 grid gap-2 md:grid-cols-2">{sources.map((source)=><div key={source} className="rounded-xl border border-slate-200 p-3"><strong className="text-[10px]">{source}</strong><p className="mt-1 text-[9px] text-slate-500">Observed source family. Rule configuration unavailable.</p></div>)}{!sources.length?<div className="rounded-xl border border-dashed border-slate-200 p-4 text-[10px] text-slate-500">No alert sources observed.</div>:null}</div></div>:null}
+
+    <InspectorDrawer open={Boolean(selected)} onClose={()=>setSelected(null)} title="Alert detail" subtitle={selected?.source??selected?.type} footer={<div className="text-[9px] text-slate-500">Acknowledgement is unavailable until durable alert state exists.</div>}>
+      {selected?<div className="space-y-3"><DetailGrid><DetailItem label="Severity" value={selected.severity}/><DetailItem label="Source" value={selected.source??selected.type}/><DetailItem label="Triggered" value={formatRelativeTime(selected.timestamp)}/><DetailItem label="Type" value={selected.type}/></DetailGrid><div className="rounded-xl border border-slate-200 p-3"><strong className="text-[10px]">Detail</strong><p className="mt-2 text-[9.5px] text-slate-500">{selected.detail||'No additional detail recorded.'}</p></div><button onClick={()=>navigate(alertAction(selected).path)} className="rounded-lg bg-blue-700 px-3 py-2 text-[10px] font-bold text-white">{alertAction(selected).label}</button></div>:null}
+    </InspectorDrawer>
+  </div>;
+};

@@ -1,0 +1,6 @@
+{
+  "ok": false,
+  "time": "2026-09-14T13:11:09.235Z",
+  "command": "capture",
+  "error": "Error: Playwright was not found in the active project. Restore or install the project Playwright dependency before running UI QA.\n    at loadPlaywright (C:\\Users\\Dreammaker\\.agents\\skills\\ui-engineering-suite\\scripts\\ui-qa.mts:128:11)\n    at capturePage (C:\\Users\\Dreammaker\\.agents\\skills\\ui-engineering-suite\\scripts\\ui-qa.mts:757:22)\n    at runCapture (C:\\Users\\Dreammaker\\.agents\\skills\\ui-engineering-suite\\scripts\\ui-qa.mts:943:24)\n    at main (C:\\Users\\Dreammaker\\.agents\\skills\\ui-engineering-suite\\scripts\\ui-qa.mts:1252:47)\n    at <anonymous> (C:\\Users\\Dreammaker\\.agents\\skills\\ui-engineering-suite\\scripts\\ui-qa.mts:1275:6)\n    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)"
+}

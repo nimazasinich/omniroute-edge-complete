@@ -1,0 +1,10 @@
+## environment
+UTC 2026-09-11T22:44:12Z
+v22.16.0
+10.9.2
+global tsc: /opt/nvm/versions/node/v22.16.0/bin/tsc
+global vite: 
+global vitest: 
+local vite: no
+local vitest: no
+local tsc: no

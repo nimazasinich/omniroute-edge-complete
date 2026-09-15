@@ -1,0 +1,13 @@
+--- fixed silent topology caps ---
+--- topology-specific slices ---
+src/components/TopologyMap.tsx:46:  return value.charAt(0).toUpperCase() + value.slice(1);
+src/topology/layout.ts:75:  return items.slice(layout.startIndex, layout.endIndex);
+src/server/app.ts:45:  const prefix = token.slice(0, 12);
+src/server/app.ts:65:  const token = authHeader.slice(7);
+src/server/app.ts:295:    keyPrefix: raw.slice(0, 12),
+src/server/app.ts:960:              const chunk = buffer.slice(0, idx);
+src/server/app.ts:961:              buffer = buffer.slice(idx + 2);
+src/server/app.ts:1213:    keyPrefix: rawKey.slice(0, 12),
+--- topology as-any cleanup in TopologyView ---
+36:  const [statusFilter, setStatusFilter] = useState<TopologyStatusFilter>('all');
+136:              if (isTopologyStatusFilter(next)) setStatusFilter(next);

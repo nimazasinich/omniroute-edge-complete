@@ -1,0 +1,7 @@
+
+> omniroute-edge@3.2.0 verify:safety
+> node scripts/verify-v3-static.mjs
+
+STATIC SAFETY PASS
+- scanned 103 files
+- checked 44 active code files for local import integrity

@@ -1,0 +1,6 @@
+{
+  "name": "Cloudflare AI Router",
+  "description": "Secure Cloudflare edge gateway and observability dashboard for an OmniRoute-managed AI routing plane.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
