@@ -71,7 +71,6 @@ export interface GatewayAuthResult {
   identity?: string;
 }
 
-
 const MAX_MODEL_INSPECTION_BYTES = 1024 * 1024;
 
 export async function extractRequestedModel(request: Request): Promise<string | null> {
@@ -258,13 +257,17 @@ export async function handleGatewayRequest(request: Request, deps: GatewayReques
   const startedAt = now();
 
   try {
-    const upstream = await fetchImpl(target.toString(), {
+    const init: RequestInit & { duplex?: 'half' } = {
       method,
       headers,
-      body: method === 'GET' || method === 'HEAD' ? undefined : request.body,
       redirect: 'manual',
       signal: request.signal,
-    });
+    };
+    if (method !== 'GET' && method !== 'HEAD') {
+      init.body = request.body;
+      init.duplex = 'half';
+    }
+    const upstream = await fetchImpl(target.toString(), init);
     const latencyMs = Math.max(0, now() - startedAt);
     const streaming = (upstream.headers.get('Content-Type') ?? '').toLowerCase().includes('text/event-stream');
     const outcome: GatewayTelemetryEvent['outcome'] = upstream.status < 400 ? 'success' : 'error';
