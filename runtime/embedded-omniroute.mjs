@@ -13,6 +13,11 @@ function parsePort(value, fallback) {
   return Number.isInteger(parsed) && parsed > 0 && parsed <= 65535 ? parsed : fallback;
 }
 
+function parsePositiveInteger(value, fallback) {
+  const parsed = Number.parseInt(String(value ?? ''), 10);
+  return Number.isInteger(parsed) && parsed > 0 ? parsed : fallback;
+}
+
 export function startEmbeddedOmniRoute({ env = process.env, spawnImpl = spawn } = {}) {
   if (env.OMNIROUTE_EMBEDDED !== 'true') return null;
 
@@ -23,7 +28,7 @@ export function startEmbeddedOmniRoute({ env = process.env, spawnImpl = spawn } 
 
   const dashboardPort = parsePort(env.DASHBOARD_PORT, 20129);
   const apiPort = parsePort(env.API_PORT, 20130);
-  const readyTimeoutMs = parsePort(env.OMNIROUTE_READY_TIMEOUT_MS, 180_000);
+  const readyTimeoutMs = parsePositiveInteger(env.OMNIROUTE_READY_TIMEOUT_MS, 180_000);
   mkdirSync(dataDir, { recursive: true });
 
   const runtimeEnv = buildRuntimeEnvironment({
