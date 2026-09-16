@@ -14,7 +14,8 @@ FROM node:24-bookworm-slim AS runtime
 ENV NODE_ENV=production \
     HOST=0.0.0.0 \
     OMNIROUTE_EMBEDDED=true \
-    DATA_DIR=/tmp/omniroute
+    DATA_DIR=/tmp/omniroute \
+    SQLITE_DB_PATH=/tmp/omniroute-edge.sqlite
 
 RUN npm install --global omniroute@3.8.50 \
     && groupadd --system omniroute-edge \
