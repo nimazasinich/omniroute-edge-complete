@@ -2,7 +2,7 @@ name: Verify OmniRoute Edge
 
 on:
   push:
-    branches: [main, vercel-native-runtime]
+    branches: [main, vercel-native-runtime, vercel-direct-omniroute]
   workflow_dispatch:
 
 permissions:
@@ -51,6 +51,41 @@ jobs:
 
       - name: Build Vercel OmniRoute image
         run: docker build --file Dockerfile.vercel --tag omniroute-edge-vercel:ci .
+
+      - name: Smoke direct OmniRoute Vercel image
+        shell: bash
+        run: |
+          set -euo pipefail
+          name=omniroute-vercel-ci
+          cleanup() {
+            docker logs "$name" 2>&1 || true
+            docker rm -f "$name" >/dev/null 2>&1 || true
+          }
+          trap cleanup EXIT
+
+          docker run -d --name "$name" -p 10001:10000 \
+            -e PORT=10000 \
+            -e INITIAL_PASSWORD='ci-only-password-ChangeMe-42' \
+            -e JWT_SECRET='ci-only-jwt-secret-0123456789-abcdefghijklmnopqrstuvwxyz' \
+            -e API_KEY_SECRET='ci-only-api-key-secret-0123456789-abcdefghijklmnopqrstuvwxyz' \
+            -e STORAGE_ENCRYPTION_KEY='0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef' \
+            -e DATA_DIR=/tmp/omniroute \
+            -e AUTH_COOKIE_SECURE=false \
+            omniroute-edge-vercel:ci >/dev/null
+
+          ready=0
+          for _ in $(seq 1 120); do
+            if curl --fail --silent --show-error http://127.0.0.1:10001/healthz >/tmp/omni-health.json; then
+              ready=1
+              break
+            fi
+            sleep 1
+          done
+          test "$ready" = 1
+
+          test "$(curl --silent --output /tmp/omni-root.html --write-out '%{http_code}' http://127.0.0.1:10001/)" = 200
+          grep -qi '<html' /tmp/omni-root.html
+          test "$(curl --silent --output /tmp/omni-models.json --write-out '%{http_code}' http://127.0.0.1:10001/v1/models)" = 401
 
       - name: Build deployable control-plane image
         run: docker build --tag omniroute-edge:ci .
