@@ -27,6 +27,7 @@ test('Node entrypoint starts embedded OmniRoute and owns the Vercel v1 gateway p
   assert.equal(existsSync('runtime/embedded-omniroute.mjs'), true, 'embedded runtime module must exist');
   const server = await readFile('server.ts', 'utf8');
   const embedded = await readFile('runtime/embedded-omniroute.mjs', 'utf8');
+  const gateway = await readFile('src/edge/gatewayCore.ts', 'utf8');
   assert.match(server, /startEmbeddedOmniRoute/);
   assert.match(server, /handleGatewayRequest/);
   assert.match(server, /\/v1/);
@@ -35,4 +36,5 @@ test('Node entrypoint starts embedded OmniRoute and owns the Vercel v1 gateway p
   assert.match(embedded, /20130/);
   assert.match(embedded, /OMNIROUTE_READY_TIMEOUT_MS/);
   assert.doesNotMatch(embedded, /onrender\.com/);
+  assert.match(gateway, /duplex/);
 });
