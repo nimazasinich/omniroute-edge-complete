@@ -49,6 +49,9 @@ jobs:
       - name: Production UI build
         run: npm run build
 
+      - name: Build Vercel OmniRoute image
+        run: docker build --file Dockerfile.vercel --tag omniroute-edge-vercel:ci .
+
       - name: Build deployable control-plane image
         run: docker build --tag omniroute-edge:ci .
 
