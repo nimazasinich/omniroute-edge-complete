@@ -11,7 +11,7 @@ test('Vercel container packages pinned OmniRoute runtime', async () => {
   assert.match(dockerfile, /FROM node:24/);
   assert.match(dockerfile, /omniroute@3\.8\.50/);
   assert.match(dockerfile, /OMNIROUTE_EMBEDDED=true/);
-  assert.match(dockerfile, /node server\.js/);
+  assert.match(dockerfile, /CMD\s*\["node",\s*"server\.js"\]/);
   assert.equal(JSON.parse(config).fluid, true);
 });
 
