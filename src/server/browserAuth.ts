@@ -13,6 +13,7 @@ export interface BrowserAuthConfig {
   INITIAL_ADMIN_EMAIL?: string;
   INITIAL_ADMIN_USERNAME?: string;
   INITIAL_ADMIN_PASSWORD?: string;
+  AUTH_ALLOW_WEAK_INITIAL_ADMIN_PASSWORD?: string;
   AUTH_SESSION_TTL_HOURS?: string;
   AUTH_COOKIE_SECURE?: string;
   AUTH_OAUTH_AUTO_PROVISION?: string;
@@ -195,7 +196,8 @@ export async function ensureInitialAdmin(db: AppDb, config: BrowserAuthConfig, i
   if (existing) return existing;
   const initialPassword = config.INITIAL_ADMIN_PASSWORD ?? '';
   const error = validatePassword(initialPassword);
-  if (error) throw new Error(`INITIAL_ADMIN_PASSWORD is not acceptable: ${error}`);
+  const allowWeakInitialPassword = config.AUTH_ALLOW_WEAK_INITIAL_ADMIN_PASSWORD?.trim().toLowerCase() === 'true';
+  if (error && !allowWeakInitialPassword) throw new Error(`INITIAL_ADMIN_PASSWORD is not acceptable: ${error}`);
   const configuredUsername = normalizeUsername(config.INITIAL_ADMIN_USERNAME);
   const username = configuredUsername && !validateUsername(configuredUsername) ? configuredUsername : null;
   return createUser(db, { email: initialEmail, username, displayName: 'Administrator', password: initialPassword });
