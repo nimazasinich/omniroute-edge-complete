@@ -64,4 +64,34 @@ describe('browser admin password login flow', () => {
     expect(statusBody.authenticated).toBe(true);
     expect(statusBody.bootstrapRequired).toBe(false);
   });
+
+  it('allows an explicitly opted-in weak initial password for a throwaway public demo deployment', async () => {
+    const { db, client } = await createTestDb();
+    clients.push(client);
+
+    const bindings = {
+      db,
+      ENVIRONMENT: 'test',
+      INITIAL_ADMIN_EMAIL: 'admin@omniroute.local',
+      INITIAL_ADMIN_USERNAME: 'admin',
+      INITIAL_ADMIN_PASSWORD: 'admin',
+      AUTH_ALLOW_WEAK_INITIAL_ADMIN_PASSWORD: 'true',
+      AUTH_COOKIE_SECURE: 'false',
+    };
+
+    const login = await app.fetch(new Request('http://test.local/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ identifier: 'admin', password: 'admin' }),
+    }), bindings);
+
+    expect(login.status).toBe(200);
+    expect(await login.json()).toMatchObject({
+      user: {
+        username: 'admin',
+        email: 'admin@omniroute.local',
+        role: 'admin',
+      },
+    });
+  });
 });
