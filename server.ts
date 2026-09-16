@@ -2,15 +2,35 @@ import 'dotenv/config';
 import { serve } from '@hono/node-server';
 import { serveStatic } from '@hono/node-server/serve-static';
 import app, { type AppBindings } from './src/server/app';
-import { getNodeDb, initializeDb } from './src/server/db/node';
+import { getNodeClient, getNodeDb, initializeDb } from './src/server/db/node';
+import { handleGatewayRequest } from './src/edge/gatewayCore';
+import {
+  createNodeGatewayAuthenticator,
+  createNodeRateLimiter,
+  recordNodeGatewayTelemetry,
+} from './src/edge/nodeGateway';
+import { startEmbeddedOmniRoute } from './runtime/embedded-omniroute.mjs';
 import fs from 'node:fs';
 
 const PORT = process.env.PORT ? Number.parseInt(process.env.PORT, 10) : 3001;
 const HOST = process.env.HOST?.trim() || '127.0.0.1';
 
+function positiveInteger(value: string | undefined, fallback: number): number {
+  const parsed = Number.parseInt(value ?? '', 10);
+  return Number.isInteger(parsed) && parsed > 0 ? parsed : fallback;
+}
+
 async function start() {
   await initializeDb();
   const db = getNodeDb();
+  const client = getNodeClient();
+  const embedded = startEmbeddedOmniRoute();
+  const runtimeOrigin = embedded?.origin ?? (process.env.OMNIROUTE_ORIGIN?.trim() || undefined);
+  const runtimeToken = embedded?.apiKey ?? (process.env.OMNIROUTE_ORIGIN_TOKEN?.trim() || undefined);
+  const authenticateGateway = createNodeGatewayAuthenticator(db, process.env.GATEWAY_AUTH_TOKEN);
+  const rateLimiter = createNodeRateLimiter(client, {
+    maxRequests: positiveInteger(process.env.GATEWAY_RATE_LIMIT_PER_MINUTE, 60),
+  });
 
   app.get('/favicon.ico', (c) => c.redirect('/favicon.svg', 302));
 
@@ -23,9 +43,9 @@ async function start() {
   const bindings: AppBindings = {
     db,
     BOOTSTRAP_SECRET: process.env.BOOTSTRAP_SECRET?.trim() || undefined,
-    OMNIROUTE_ORIGIN: process.env.OMNIROUTE_ORIGIN?.trim() || undefined,
-    OMNIROUTE_ORIGIN_TOKEN: process.env.OMNIROUTE_ORIGIN_TOKEN?.trim() || undefined,
-    ENVIRONMENT: process.env.ENVIRONMENT?.trim() || 'local',
+    OMNIROUTE_ORIGIN: runtimeOrigin,
+    OMNIROUTE_ORIGIN_TOKEN: runtimeToken,
+    ENVIRONMENT: process.env.ENVIRONMENT?.trim() || (process.env.VERCEL ? 'vercel' : 'local'),
     INITIAL_ADMIN_EMAIL: process.env.INITIAL_ADMIN_EMAIL?.trim() || undefined,
     INITIAL_ADMIN_USERNAME: process.env.INITIAL_ADMIN_USERNAME?.trim() || undefined,
     INITIAL_ADMIN_PASSWORD: process.env.INITIAL_ADMIN_PASSWORD || undefined,
@@ -43,16 +63,35 @@ async function start() {
     MICROSOFT_TENANT_ID: process.env.MICROSOFT_TENANT_ID?.trim() || undefined,
   };
 
-  serve({
-    fetch: (request) => app.fetch(request, bindings),
+  const server = serve({
+    fetch: async (request) => {
+      const url = new URL(request.url);
+      if (url.pathname === '/v1' || url.pathname.startsWith('/v1/')) {
+        return handleGatewayRequest(request, {
+          authenticate: authenticateGateway,
+          rateLimiter,
+          origin: runtimeOrigin,
+          originToken: runtimeToken,
+          recordTelemetry: (event) => recordNodeGatewayTelemetry(db, event),
+        });
+      }
+      return app.fetch(request, bindings);
+    },
     port: PORT,
     hostname: HOST,
   }, (info) => {
     console.log(`OmniRoute Edge server listening on http://${HOST}:${info.port}`);
   });
+
+  const shutdown = (signal: NodeJS.Signals) => {
+    embedded?.child?.kill(signal);
+    server.close(() => process.exit(0));
+  };
+  process.once('SIGTERM', () => shutdown('SIGTERM'));
+  process.once('SIGINT', () => shutdown('SIGINT'));
 }
 
 start().catch((error) => {
-  console.error('Failed to start local server', error);
+  console.error('Failed to start OmniRoute Edge server', error);
   process.exitCode = 1;
 });
