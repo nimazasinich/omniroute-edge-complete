@@ -2,7 +2,7 @@ name: Verify OmniRoute Edge
 
 on:
   push:
-    branches: [main]
+    branches: [main, vercel-native-runtime]
   workflow_dispatch:
 
 permissions:
