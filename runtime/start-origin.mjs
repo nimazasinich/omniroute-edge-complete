@@ -1,6 +1,7 @@
 import http from 'node:http';
 import { spawn } from 'node:child_process';
 import { createOriginIngress } from './origin-ingress.mjs';
+import { resolveRuntimeExecutable } from './resolve-runtime-executable.mjs';
 
 function required(name) {
   const value = process.env[name]?.trim();
@@ -21,7 +22,7 @@ const originSharedSecret = required('ORIGIN_SHARED_SECRET');
 const dashboardPort = 20129;
 const apiPort = 20130;
 
-const runtimeExecutable = process.platform === 'win32' ? 'omniroute.cmd' : 'omniroute';
+const runtimeExecutable = resolveRuntimeExecutable();
 const runtime = spawn(runtimeExecutable, [
   'serve', '--no-open', '--no-tray', '--no-recovery', '--port', String(dashboardPort),
 ], {
