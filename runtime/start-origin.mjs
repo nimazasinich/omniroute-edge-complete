@@ -35,6 +35,7 @@ const runtime = spawn(runtimeExecutable, [
     OMNIROUTE_API_KEY: apiKey,
     REQUIRE_API_KEY: 'true',
     OMNIROUTE_SERVER_HOST: '127.0.0.1',
+    PORT: String(dashboardPort),
     API_HOST: '127.0.0.1',
     DASHBOARD_PORT: String(dashboardPort),
     API_PORT: String(apiPort),

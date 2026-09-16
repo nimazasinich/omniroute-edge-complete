@@ -130,3 +130,11 @@ test('container contract pins the real runtime and fails closed on missing produ
   assert.match(start, /OMNIROUTE_SERVER_HOST[^\n]*127\.0\.0\.1/);
   assert.match(start, /API_HOST[^\n]*127\.0\.0\.1/);
 });
+
+test('native launcher isolates Render public PORT from OmniRoute internal listeners', async () => {
+  const start = await readFile('runtime/start-origin.mjs', 'utf8');
+  const ingress = await readFile('runtime/origin-ingress.mjs', 'utf8');
+  assert.match(start, /PORT:\s*String\(dashboardPort\)/);
+  assert.match(start, /API_PORT:\s*String\(apiPort\)/);
+  assert.match(ingress, /'\/api\/monitoring\/health'/);
+});

@@ -34,7 +34,7 @@ export function createOriginIngress({
       return jsonError(401, 'invalid_origin_credential', 'Origin authentication required');
     }
 
-    const runtimePath = incoming.pathname === '/healthz' ? '/api/health' : incoming.pathname;
+    const runtimePath = incoming.pathname === '/healthz' ? '/api/monitoring/health' : incoming.pathname;
     const target = new URL(runtimePath + incoming.search, incoming.pathname === '/healthz' ? health : origin);
     const headers = new Headers(request.headers);
     headers.delete('host');
@@ -65,4 +65,3 @@ export function createOriginIngress({
   };
 }
 import { timingSafeEqual } from 'node:crypto';
-
