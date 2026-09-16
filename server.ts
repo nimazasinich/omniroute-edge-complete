@@ -29,6 +29,7 @@ async function start() {
     INITIAL_ADMIN_EMAIL: process.env.INITIAL_ADMIN_EMAIL?.trim() || undefined,
     INITIAL_ADMIN_USERNAME: process.env.INITIAL_ADMIN_USERNAME?.trim() || undefined,
     INITIAL_ADMIN_PASSWORD: process.env.INITIAL_ADMIN_PASSWORD || undefined,
+    AUTH_ALLOW_WEAK_INITIAL_ADMIN_PASSWORD: process.env.AUTH_ALLOW_WEAK_INITIAL_ADMIN_PASSWORD?.trim() || undefined,
     AUTH_SESSION_TTL_HOURS: process.env.AUTH_SESSION_TTL_HOURS?.trim() || undefined,
     AUTH_COOKIE_SECURE: process.env.AUTH_COOKIE_SECURE?.trim() || undefined,
     AUTH_OAUTH_AUTO_PROVISION: process.env.AUTH_OAUTH_AUTO_PROVISION?.trim() || undefined,
