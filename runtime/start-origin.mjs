@@ -1,7 +1,7 @@
 import http from 'node:http';
 import { spawn } from 'node:child_process';
 import { createOriginIngress } from './origin-ingress.mjs';
-import { resolveRuntimeExecutable } from './resolve-runtime-executable.mjs';
+import { buildRuntimeEnvironment, resolveRuntimeExecutable } from './resolve-runtime-executable.mjs';
 
 function required(name) {
   const value = process.env[name]?.trim();
@@ -23,23 +23,20 @@ const dashboardPort = 20129;
 const apiPort = 20130;
 
 const runtimeExecutable = resolveRuntimeExecutable();
+const runtimeEnv = buildRuntimeEnvironment({
+  parentEnv: process.env,
+  dataDir,
+  storageKey,
+  apiKey,
+  dashboardPort,
+  apiPort,
+});
 const runtime = spawn(runtimeExecutable, [
   'serve', '--no-open', '--no-tray', '--no-recovery', '--port', String(dashboardPort),
 ], {
   stdio: 'inherit',
   shell: process.platform === 'win32',
-  env: {
-    ...process.env,
-    DATA_DIR: dataDir,
-    STORAGE_ENCRYPTION_KEY: storageKey,
-    OMNIROUTE_API_KEY: apiKey,
-    REQUIRE_API_KEY: 'true',
-    OMNIROUTE_SERVER_HOST: '127.0.0.1',
-    PORT: String(dashboardPort),
-    API_HOST: '127.0.0.1',
-    DASHBOARD_PORT: String(dashboardPort),
-    API_PORT: String(apiPort),
-  },
+  env: runtimeEnv,
 });
 
 const ingress = createOriginIngress({

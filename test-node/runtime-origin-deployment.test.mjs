@@ -115,6 +115,7 @@ test('container contract pins the real runtime and fails closed on missing produ
   const dockerfile = await readFile('Dockerfile.omniroute-origin', 'utf8');
   const dockerignore = await readFile('.dockerignore', 'utf8');
   const start = await readFile('runtime/start-origin.mjs', 'utf8');
+  const runtimeEnvironment = await readFile('runtime/resolve-runtime-executable.mjs', 'utf8');
 
   assert.match(dockerfile, /FROM node:24[^\n]*/);
   assert.match(dockerfile, /omniroute@3\.8\.50/);
@@ -125,16 +126,34 @@ test('container contract pins the real runtime and fails closed on missing produ
   assert.match(dockerignore, /^\.wrangler\/$/m);
   assert.match(dockerignore, /\.sqlite/);
   for (const required of ['STORAGE_ENCRYPTION_KEY', 'OMNIROUTE_API_KEY', 'ORIGIN_SHARED_SECRET', 'DATA_DIR', 'REQUIRE_API_KEY', 'API_PORT', 'DASHBOARD_PORT', 'API_HOST']) {
-    assert.ok(start.includes(required), `start-origin.mjs must enforce ${required}`);
+    assert.ok(`${start}\n${runtimeEnvironment}`.includes(required), `origin launcher must enforce ${required}`);
   }
-  assert.match(start, /OMNIROUTE_SERVER_HOST[^\n]*127\.0\.0\.1/);
-  assert.match(start, /API_HOST[^\n]*127\.0\.0\.1/);
+  assert.match(runtimeEnvironment, /OMNIROUTE_SERVER_HOST[^\n]*127\.0\.0\.1/);
+  assert.match(runtimeEnvironment, /API_HOST[^\n]*127\.0\.0\.1/);
 });
 
 test('native launcher isolates Render public PORT from OmniRoute internal listeners', async () => {
   const start = await readFile('runtime/start-origin.mjs', 'utf8');
   const ingress = await readFile('runtime/origin-ingress.mjs', 'utf8');
-  assert.match(start, /PORT:\s*String\(dashboardPort\)/);
-  assert.match(start, /API_PORT:\s*String\(apiPort\)/);
+  assert.match(start, /buildRuntimeEnvironment/);
   assert.match(ingress, /'\/api\/monitoring\/health'/);
+});
+
+test('healthz forwards to OmniRoute monitoring health without opening dashboard routes', async () => {
+  const forwarded = [];
+  const ingress = createOriginIngress({
+    runtimeOrigin: 'http://127.0.0.1:20130',
+    healthOrigin: 'http://127.0.0.1:20129',
+    originSharedSecret: 'worker-to-origin-secret',
+    runtimeApiKey: 'runtime-only-key',
+    fetchImpl: async (request) => {
+      forwarded.push(request.url);
+      return Response.json({ status: 'ok' });
+    },
+  });
+  assert.equal((await ingress(new Request('https://origin.test/healthz'))).status, 200);
+  assert.deepEqual(forwarded, ['http://127.0.0.1:20129/api/monitoring/health']);
+  assert.equal((await ingress(new Request('https://origin.test/'))).status, 404);
+  assert.equal((await ingress(new Request('https://origin.test/dashboard'))).status, 404);
+  assert.equal((await ingress(new Request('https://origin.test/v1/models'))).status, 401);
 });
