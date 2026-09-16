@@ -9,14 +9,34 @@ import type { AppDb } from './types';
 let client: Client | null = null;
 let nodeDb: AppDb | null = null;
 
-/** Lazily creates (once) and returns the Node/libsql drizzle instance. */
-export function getNodeDb(): AppDb {
-  if (!nodeDb) {
-    const dbPath = process.env.SQLITE_DB_PATH ?? path.join(process.cwd(), 'sqlite.db');
-    client = createClient({ url: dbPath === ':memory:' ? ':memory:' : `file:${dbPath}` });
+function createConfiguredClient(): Client {
+  const tursoUrl = process.env.TURSO_DATABASE_URL?.trim();
+  if (tursoUrl) {
+    const authToken = process.env.TURSO_AUTH_TOKEN?.trim();
+    if (!authToken) throw new Error('TURSO_AUTH_TOKEN is required when TURSO_DATABASE_URL is configured');
+    return createClient({ url: tursoUrl, authToken });
+  }
+
+  const dbPath = process.env.SQLITE_DB_PATH ?? path.join(process.cwd(), 'sqlite.db');
+  return createClient({ url: dbPath === ':memory:' ? ':memory:' : `file:${dbPath}` });
+}
+
+function ensureNodeDb(): { client: Client; db: AppDb } {
+  if (!client || !nodeDb) {
+    client = createConfiguredClient();
     nodeDb = drizzle(client, { schema });
   }
-  return nodeDb;
+  return { client, db: nodeDb };
+}
+
+/** Lazily creates (once) and returns the Node/libsql drizzle instance. */
+export function getNodeDb(): AppDb {
+  return ensureNodeDb().db;
+}
+
+/** Returns the underlying libSQL client used by Node-only runtime adapters. */
+export function getNodeClient(): Client {
+  return ensureNodeDb().client;
 }
 
 /** Creates a brand-new, isolated (non-singleton) Node/libsql db + schema — for tests only.
@@ -29,13 +49,14 @@ export async function createTestDb(): Promise<{ db: AppDb; client: Client }> {
   return { db: testDb, client: testClient };
 }
 
-/** Creates tables (if missing) and bootstraps the first admin key. Node/local dev only —
+/** Creates tables (if missing) and bootstraps the first admin key. Node/local/Vercel only —
  * Cloudflare D1 uses `npm run cf:d1:migrate` (drizzle-kit generated migrations) instead. */
 export async function initializeDb() {
-  getNodeDb();
-  if (!client) throw new Error('Node db client was not initialized');
-  console.log('Initializing database schema...');
-  await runMigrations(client, { seedAdminKey: true });
+  const configured = ensureNodeDb();
+  console.log(process.env.TURSO_DATABASE_URL?.trim()
+    ? 'Initializing Turso/libSQL database schema...'
+    : 'Initializing local SQLite database schema...');
+  await runMigrations(configured.client, { seedAdminKey: true });
 }
 
 async function runMigrations(execClient: Client, opts: { seedAdminKey: boolean }) {
@@ -89,6 +110,14 @@ async function runMigrations(execClient: Client, opts: { seedAdminKey: boolean }
       revoked INTEGER NOT NULL DEFAULT 0,
       last_used_at INTEGER,
       created_at INTEGER NOT NULL
+    )
+  `);
+
+  await execClient.execute(`
+    CREATE TABLE IF NOT EXISTS gateway_rate_limits (
+      identity TEXT PRIMARY KEY,
+      window_start INTEGER NOT NULL,
+      request_count INTEGER NOT NULL DEFAULT 0
     )
   `);
 
